@@ -34,7 +34,8 @@ Abrir `http://localhost:3000/reviews/sprint-14/` (el puerto lo indica `serve`).
 2. Cada slide es un `<section class="slide …">` dentro de `.stage`; el motor los descubre solos. Actualizar el total del contador (`data-counter-tot`).
 3. **Flujo interactivo**: un `.flow` con nodos `<button class="flow-node" data-label data-title data-desc [data-cr]>`; el `data-title` admite HTML (`<span class="hl">`). El nodo con `data-cr` recibe el anillo y la etiqueta *change request*. El estado va en `<div class="deploy" data-state="qa|none|prod">` bajo los pasos.
 4. **Landing por iframe**: `iframe[data-src]` se carga en diferido al activarse su slide. El toggle Desktop/Tablet/Mobile cambia el ancho del marco.
-5. Añadir una card al hub (`index.html`).
+5. **Imágenes empotradas**: las capturas y los logos van **dentro del HTML/CSS como data URI** (WebP en base64), no como archivos referenciados. Así el deck no depende de cómo se sirva la página: si carga el HTML, cargan las imágenes. Los PNG originales quedan en `reviews/<sprint>/assets/` como fuente para regenerar.
+6. Añadir una card al hub (`index.html`).
 
 ## Convenciones de review
 
