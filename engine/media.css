@@ -109,8 +109,8 @@
   color: var(--ink-3); font-family: var(--font-heading); font-size: 1.6cqh; pointer-events: none;
 }
 
-/* side panel — shared by the landing and the confirmation-emails slides */
-.landing aside, .mails aside { display: flex; flex-direction: column; gap: 2cqh; }
+/* side panel — landing slide */
+.landing aside { display: flex; flex-direction: column; gap: 2cqh; }
 .a-lead { font-size: 1.95cqh; color: var(--ink); line-height: 1.5; }
 .a-lead b { color: var(--energy-d); }
 .a-flow { display: flex; flex-direction: column; gap: 1.2cqh; margin: 0; padding: 0; }
@@ -122,20 +122,27 @@ aside code { font-family: var(--font-mono); font-size: .9em; color: var(--violet
 .a-stack { display: flex; flex-wrap: wrap; gap: .7cqh .7cqw; }
 
 /* ========================================== ECO · confirmation emails ===== */
-.mails { display: flex; gap: 3cqw; margin-top: 2.4cqh; flex: 1; min-height: 0; align-items: stretch; }
-/* fixed column width: the screenshots are 600px wide intrinsically and would
-   otherwise blow out the flex row before `height:100%` ever scales them down. */
-.mail { flex: 0 0 21cqw; display: flex; flex-direction: column; gap: 1.2cqh; min-height: 0; margin: 0; }
-.mail figcaption { display: flex; flex-direction: column; gap: .5cqh; }
+.mails { display: flex; flex-direction: column; gap: 1.6cqh; margin-top: 1.4cqh; flex: 1; min-height: 0; }
+.mail-row { display: flex; gap: 4cqw; flex: 1; min-height: 0; justify-content: center; }
+.mail { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .9cqh; min-height: 0; margin: 0; }
+.mail figcaption { display: flex; flex-direction: column; gap: .4cqh; }
 .mail .to { font-family: var(--font-heading); font-weight: 700; font-size: 1.85cqh; color: var(--ink); }
 .mail .subject { font-family: var(--font-mono); font-size: 1.3cqh; color: var(--ink-3); line-height: 1.35; }
-.mail .shot { flex: 1; min-height: 0; display: flex; align-items: flex-start; justify-content: flex-start; }
+.mail .shot { flex: 1; min-height: 0; display: flex; align-items: flex-start; justify-content: center; }
 .mail .shot img {
   max-height: 100%; max-width: 100%; width: auto; height: auto; display: block;
   border: 1px solid var(--line); border-radius: var(--radius-lg);
   background: var(--surface); box-shadow: 0 14px 34px rgba(46,32,109,.14);
 }
-.mails aside { flex: 1; justify-content: center; }
+.mail-note {
+  flex: 0 0 auto; text-align: center; margin: 0 auto; max-width: 104ch;
+  font-size: 1.7cqh; color: var(--ink-2); line-height: 1.45;
+}
+.mail-note b { color: var(--energy-d); }
+
+/* compact head so the emails get the height */
+.slide--mails-slide { padding-top: 4.5cqh; padding-bottom: 5cqh; }
+.slide--mails-slide .slide-head .titles h2 { font-size: 3.4cqh; margin-top: .6cqh; }
 
 @media (prefers-reduced-motion: reduce) {
   .device, .media .frame { transition: none; }
