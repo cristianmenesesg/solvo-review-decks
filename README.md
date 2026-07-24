@@ -26,13 +26,13 @@ npx serve .        # o: python3 -m http.server 5173
 
 Abrir `http://localhost:3000/reviews/sprint-14/` (el puerto lo indica `serve`).
 
-**Controles**: `→` / `Espacio` avanza · `←` retrocede · `F` pantalla completa · `Home` / `End` a los extremos. Barra inferior con prev/next, índice y botón de pantalla completa (se auto-oculta). En los slides de flujo: **click en un nodo** o **arrastrá el scrubber** para ver el paso en grande.
+**Controles**: `→` / `Espacio` avanza · `←` retrocede · `F` pantalla completa · `Home` / `End` a los extremos. Controles flotantes en la esquina inferior derecha (prev/next, índice y pantalla completa); se auto-ocultan. En los slides de flujo: **click en un nodo** para ver ese paso en grande; el estado de despliegue va en una banda visible bajo los pasos.
 
 ## Autoría de un deck nuevo
 
 1. Copiar `reviews/sprint-14/` a `reviews/sprint-NN/` y editar el contenido.
 2. Cada slide es un `<section class="slide …">` dentro de `.stage`; el motor los descubre solos. Actualizar el total del contador (`data-counter-tot`).
-3. **Flujo interactivo**: un `.flow` con nodos `<button class="flow-node" data-label data-title data-desc [data-cr]>`; el `data-title` admite HTML (`<span class="hl">`). El nodo con `data-cr` recibe el anillo y la etiqueta *change request*.
+3. **Flujo interactivo**: un `.flow` con nodos `<button class="flow-node" data-label data-title data-desc [data-cr]>`; el `data-title` admite HTML (`<span class="hl">`). El nodo con `data-cr` recibe el anillo y la etiqueta *change request*. El estado va en `<div class="deploy" data-state="qa|none|prod">` bajo los pasos.
 4. **Landing por iframe**: `iframe[data-src]` se carga en diferido al activarse su slide. El toggle Desktop/Tablet/Mobile cambia el ancho del marco.
 5. Añadir una card al hub (`index.html`).
 
