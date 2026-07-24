@@ -123,7 +123,7 @@
     <section class="slide slide--content slide--flow">
       <div class="slide-head"><div class="titles">
         <span class="eyebrow">Talent Pool Scraping — Release 2</span>
-        <h2>Construcción del pool de candidatos</h2>
+        <h2>Scraping de candidatos #OpenToWork</h2>
         <p class="sub">Busca candidatos abiertos a trabajar en LinkedIn y, desde este sprint, también guarda su email.</p>
       </div>
       </div>
@@ -313,6 +313,40 @@
       <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · ECO</div>
     </section>
 
+    <!-- ============================================================ ECO ·· correos -->
+    <section class="slide slide--content slide--mails-slide">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">Landing de Agendamiento</span>
+        <h2>Correos de confirmación</h2>
+        <p class="sub">Al confirmar la reserva salen dos correos con marca propia, en vez de la plantilla genérica.</p>
+      </div></div>
+
+      <div class="mails">
+        <figure class="mail">
+          <figcaption>
+            <span class="to">Al prospecto</span>
+            <span class="subject">“Your meeting with Solvo is confirmed”</span>
+          </figcaption>
+          <div class="shot"><img src="assets/email-prospect.png" alt="Correo de confirmación que recibe el prospecto"></div>
+        </figure>
+        <figure class="mail">
+          <figcaption>
+            <span class="to">Aviso interno</span>
+            <span class="subject">“New meeting booked: Sarah Chen (Acme Corp)”</span>
+          </figcaption>
+          <div class="shot"><img src="assets/email-account.png" alt="Aviso interno a la cuenta de agendamiento"></div>
+        </figure>
+        <aside>
+          <p class="a-lead">Cada reserva dispara <b>dos correos</b>, con la marca de Solvo.</p>
+          <ul class="a-flow">
+            <li>Al prospecto: fecha, hora y el enlace de la videollamada.</li>
+            <li>Aviso interno a la cuenta de agendamiento, con los datos del prospecto para reasignar el comercial.</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · ECO</div>
+    </section>
+
     <!-- ======================================================= PRÓXIMOS PASOS -->
     <section class="slide slide--content slide--next">
       <div class="slide-head"><div class="titles">
@@ -356,7 +390,7 @@
   <!-- controls -->
   <div class="controls">
     <button class="ctrl" data-action="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>13</span></span>
+    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>14</span></span>
     <button class="ctrl" data-action="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <button class="ctrl" data-action="fullscreen" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
   </div>

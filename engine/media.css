@@ -100,17 +100,33 @@
   color: var(--ink-3); font-family: var(--font-heading); font-size: 1.6cqh; pointer-events: none;
 }
 
-/* landing side panel */
-.landing aside { display: flex; flex-direction: column; gap: 2cqh; }
-.landing aside .a-lead { font-size: 1.95cqh; color: var(--ink); line-height: 1.5; }
-.landing aside .a-lead b { color: var(--energy-d); }
-.landing aside .a-flow { display: flex; flex-direction: column; gap: 1.2cqh; margin: 0; padding: 0; }
-.landing aside .a-flow li {
+/* side panel — shared by the landing and the confirmation-emails slides */
+.landing aside, .mails aside { display: flex; flex-direction: column; gap: 2cqh; }
+.a-lead { font-size: 1.95cqh; color: var(--ink); line-height: 1.5; }
+.a-lead b { color: var(--energy-d); }
+.a-flow { display: flex; flex-direction: column; gap: 1.2cqh; margin: 0; padding: 0; }
+.a-flow li {
   list-style: none; position: relative; padding-left: 2.2cqw; font-size: 1.7cqh; color: var(--ink-2); line-height: 1.4;
 }
-.landing aside .a-flow li::before { content: ""; position: absolute; left: 0; top: .7cqh; width: 1cqh; height: 1cqh; border-radius: 50%; background: var(--grad-heat); }
-.landing aside code { font-family: var(--font-mono); font-size: .9em; color: var(--violet); }
-.landing aside .a-stack { display: flex; flex-wrap: wrap; gap: .7cqh .7cqw; }
+.a-flow li::before { content: ""; position: absolute; left: 0; top: .7cqh; width: 1cqh; height: 1cqh; border-radius: 50%; background: var(--grad-heat); }
+aside code { font-family: var(--font-mono); font-size: .9em; color: var(--violet); }
+.a-stack { display: flex; flex-wrap: wrap; gap: .7cqh .7cqw; }
+
+/* ========================================== ECO · confirmation emails ===== */
+.mails { display: flex; gap: 3cqw; margin-top: 2.4cqh; flex: 1; min-height: 0; align-items: stretch; }
+/* fixed column width: the screenshots are 600px wide intrinsically and would
+   otherwise blow out the flex row before `height:100%` ever scales them down. */
+.mail { flex: 0 0 21cqw; display: flex; flex-direction: column; gap: 1.2cqh; min-height: 0; margin: 0; }
+.mail figcaption { display: flex; flex-direction: column; gap: .5cqh; }
+.mail .to { font-family: var(--font-heading); font-weight: 700; font-size: 1.85cqh; color: var(--ink); }
+.mail .subject { font-family: var(--font-mono); font-size: 1.3cqh; color: var(--ink-3); line-height: 1.35; }
+.mail .shot { flex: 1; min-height: 0; display: flex; align-items: flex-start; justify-content: flex-start; }
+.mail .shot img {
+  max-height: 100%; max-width: 100%; width: auto; height: auto; display: block;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: var(--surface); box-shadow: 0 14px 34px rgba(46,32,109,.14);
+}
+.mails aside { flex: 1; justify-content: center; }
 
 @media (prefers-reduced-motion: reduce) {
   .device, .media .frame { transition: none; }
