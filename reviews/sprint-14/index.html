@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sprint Review 14 · Solvo GenAI</title>
+<link rel="icon" href="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_Color.png">
+<link rel="stylesheet" href="../../engine/deck.css">
+<link rel="stylesheet" href="../../engine/flow.css">
+<link rel="stylesheet" href="../../engine/media.css">
+</head>
+<body>
+
+<div id="deck">
+  <div class="stage">
+
+    <!-- ============================================================ COVER -->
+    <section class="slide slide--cover">
+      <div class="cover-brand"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Logo_White.png" alt="Solvo GenAI"></div>
+      <span class="eyebrow cover-kicker" data-reveal style="--i:0">Sprint Review · Sprint 14</span>
+      <h1 data-reveal style="--i:1">Cuatro proyectos<br><span class="hl">camino a producción</span></h1>
+      <div class="cover-meta" data-reveal style="--i:2">
+        <span>6 → 17 de julio de 2026</span><span class="sep"></span><span>Softgic · Product Owner</span>
+      </div>
+      <div class="cover-projects" data-reveal style="--i:3">
+        <span class="cp"><b>CCO</b> · Current Client Openings</span>
+        <span class="cp"><b>TPS</b> · Talent Pool Scraping</span>
+        <span class="cp"><b>ODO</b> · On-Demand Openings</span>
+        <span class="cp"><b>ECO</b> · Landing de Agendamiento</span>
+      </div>
+    </section>
+
+    <!-- =========================================================== AGENDA -->
+    <section class="slide slide--content slide--agenda">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow" data-reveal style="--i:0">Agenda</span>
+        <h2 data-reveal style="--i:1">Los cuatro proyectos del sprint</h2>
+      </div></div>
+      <div class="agenda-list">
+        <div class="agenda-item" data-reveal style="--i:2">
+          <span class="ai-sigla">CCO</span>
+          <span class="ai-name">Current Client Openings<small>Cada semana busca las vacantes nuevas de los clientes activos</small></span>
+          <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        </div>
+        <div class="agenda-item" data-reveal style="--i:3">
+          <span class="ai-sigla">TPS</span>
+          <span class="ai-name">Talent Pool Scraping<small>Captura del email del candidato en el pipeline · change request</small></span>
+          <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        </div>
+        <div class="agenda-item" data-reveal style="--i:4">
+          <span class="ai-sigla">ODO</span>
+          <span class="ai-name">On-Demand Openings<small>Scraping de vacantes por demanda desde Solvo Platform</small></span>
+          <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        </div>
+        <div class="agenda-item" data-reveal style="--i:5">
+          <span class="ai-sigla">ECO</span>
+          <span class="ai-name">Landing de Agendamiento<small>Landing propia para reservar reuniones con un comercial</small></span>
+          <span class="badge" data-state="none"><i class="dot"></i>Sin desplegar</span>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14</div>
+    </section>
+
+    <!-- ============================================================ CCO ·· divider -->
+    <section class="slide slide--section">
+      <span class="sec-index">01 / 04</span>
+      <span class="eyebrow" data-reveal style="--i:0">CCO · Current Client Openings</span>
+      <div class="sigla" data-reveal style="--i:1">CCO</div>
+      <h2 class="sec-title" data-reveal style="--i:2">Current Client Openings</h2>
+      <p class="sec-scope" data-reveal style="--i:3">Cada semana busca, sin que nadie la dispare, las vacantes que publican los clientes activos de Solvo y le arma a cada vendedor el listado de sus cuentas.</p>
+    </section>
+
+    <!-- ============================================================ CCO ·· flow -->
+    <section class="slide slide--content slide--flow">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">Current Client Openings</span>
+        <h2>Detección semanal de vacantes</h2>
+        <p class="sub">Cada viernes, en automático: encuentra las vacantes nuevas de los clientes y avisa a su vendedor.</p>
+      </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-caption">
+          <div class="fc-step"><span class="num">01</span><span class="name"></span><span class="cr badge badge--cr" hidden>Change request</span></div>
+          <h3 class="fc-title"></h3>
+          <p class="fc-desc"></p>
+        </div>
+        <div class="flow-rail">
+          <div class="flow-track"><span class="fill"></span><span class="pulse"></span></div>
+          <div class="flow-nodes">
+            <button class="flow-node" data-label="Arranque semanal" data-title="Arranque semanal automático" data-desc="Cada viernes el proceso arranca solo, sin que nadie lo dispare."><span class="fn-dot">1</span><span class="fn-label">Arranque semanal</span></button>
+            <button class="flow-node" data-label="Chequeo de salud" data-title="Chequeo de salud" data-desc="Antes de empezar, verifica que los servicios externos respondan; si alguno está caído, no arranca para no dejar resultados a medias."><span class="fn-dot">2</span><span class="fn-label">Chequeo de salud</span></button>
+            <button class="flow-node" data-label="Clientes activos" data-title="Selección de clientes activos" data-desc="Toma solo las empresas que hoy son clientes de Solvo."><span class="fn-dot">3</span><span class="fn-label">Clientes activos</span></button>
+            <button class="flow-node" data-label="Búsqueda en portales" data-title="Búsqueda en Indeed y LinkedIn" data-desc="Busca en paralelo las vacantes publicadas por cada cliente en ambos portales; si una empresa falla, el resto continúa."><span class="fn-dot">4</span><span class="fn-label">Búsqueda en portales</span></button>
+            <button class="flow-node" data-label="Consolidación" data-title="Consolidación sin duplicados" data-desc="Guarda las vacantes nuevas y descarta las que ya conocía."><span class="fn-dot">5</span><span class="fn-label">Consolidación</span></button>
+            <button class="flow-node" data-label="Reporte al vendedor" data-title="Reporte a cada vendedor" data-desc="Envía a cada vendedor un correo con las vacantes recientes de sus clientes."><span class="fn-dot">6</span><span class="fn-label">Reporte al vendedor</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="deploy" data-state="qa">
+        <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        <span class="deploy-note">En pruebas con el listado oficial de clientes que entregó Solvo. Sale a producción apenas pase la validación — objetivo Sprint 15.</span>
+      </div>
+
+      <div class="dock">
+        <div class="stack">
+          <span class="chips-label">Stack</span>
+          <span class="chip">n8n</span><span class="chip">PostgreSQL</span><span class="chip">Oxylabs</span><span class="chip">Apify</span><span class="chip">Brevo</span>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · CCO</div>
+    </section>
+
+    <!-- ============================================================ TPS ·· divider -->
+    <section class="slide slide--section">
+      <span class="sec-index">02 / 04</span>
+      <span class="eyebrow" data-reveal style="--i:0">TPS · Talent Pool Scraping — Release 2</span>
+      <div class="sigla" data-reveal style="--i:1">TPS</div>
+      <h2 class="sec-title" data-reveal style="--i:2">Talent Pool Scraping</h2>
+      <p class="sec-scope" data-reveal style="--i:3">Busca en LinkedIn candidatos abiertos a trabajar fuera de USA y arma un pool listo para reclutar. Este sprint suma la captura del email de cada candidato.</p>
+    </section>
+
+    <!-- ============================================================ TPS ·· flow -->
+    <section class="slide slide--content slide--flow">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">Talent Pool Scraping — Release 2</span>
+        <h2>Construcción del pool de candidatos</h2>
+        <p class="sub">Busca candidatos abiertos a trabajar en LinkedIn y, desde este sprint, también guarda su email.</p>
+      </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-caption">
+          <div class="fc-step"><span class="num">01</span><span class="name"></span><span class="cr badge badge--cr" hidden>Change request</span></div>
+          <h3 class="fc-title"></h3>
+          <p class="fc-desc"></p>
+        </div>
+        <div class="flow-rail">
+          <div class="flow-track"><span class="fill"></span><span class="pulse"></span></div>
+          <div class="flow-nodes">
+            <button class="flow-node" data-label="Disparo programado" data-title="Disparo programado" data-desc="Arranca según la frecuencia configurada y recorre cada perfil de búsqueda, país por país y ciudad por ciudad."><span class="fn-dot">1</span><span class="fn-label">Disparo programado</span></button>
+            <button class="flow-node" data-label="Búsqueda de perfiles" data-title="Búsqueda de perfiles en LinkedIn" data-desc="Busca en español e inglés, prioriza la señal open-to-work y excluye reclutadores."><span class="fn-dot">2</span><span class="fn-label">Búsqueda de perfiles</span></button>
+            <button class="flow-node" data-label="Validación" data-title="Detalle y validación open-to-work" data-desc="Revisa cada perfil, confirma que esté abierto a trabajar y descarta a quienes no lo están."><span class="fn-dot">3</span><span class="fn-label">Validación</span></button>
+            <button class="flow-node is-cr" data-cr data-label="Captura de email" data-title="Captura del <span class='hl'>email</span> del candidato" data-desc="Nuevo este sprint: en la misma corrida busca y guarda el email de cada candidato. Antes se hacía después y a mano; ahora el candidato ya queda listo para contactar."><span class="fn-tag">Change request</span><span class="fn-dot">4</span><span class="fn-label">Captura de email</span></button>
+            <button class="flow-node" data-label="Disponibilidad oculta" data-title="Disponibilidad oculta" data-desc="Revisa candidatos que no figuraban disponibles para detectar desempleo o freelance y reincorporarlos al pool."><span class="fn-dot">5</span><span class="fn-label">Disponibilidad oculta</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="deploy" data-state="qa">
+        <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        <span class="deploy-note">En QA la parte nueva: la búsqueda del email de cada candidato. Pasa a producción en el Sprint 16.</span>
+      </div>
+
+      <div class="dock">
+        <div class="stack">
+          <span class="chips-label">Stack</span>
+          <span class="chip">n8n</span><span class="chip">Oxylabs</span><span class="chip">PostgreSQL</span><span class="chip">servicio de email</span><span class="chip">OpenAI</span><span class="chip">Brevo</span>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · TPS</div>
+    </section>
+
+    <!-- ============================================================ ODO ·· divider -->
+    <section class="slide slide--section">
+      <span class="sec-index">03 / 04</span>
+      <span class="eyebrow" data-reveal style="--i:0">ODO · On-Demand Openings</span>
+      <div class="sigla" data-reveal style="--i:1">ODO</div>
+      <h2 class="sec-title" data-reveal style="--i:2">On-Demand Openings</h2>
+      <p class="sec-scope" data-reveal style="--i:3">Desde Solvo Platform, el comercial pide las vacantes de una empresa puntual y revisa el resultado antes de guardarlo, sin esperar al barrido semanal.</p>
+    </section>
+
+    <!-- ============================================================ ODO ·· flow -->
+    <section class="slide slide--content slide--flow">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">On-Demand Openings</span>
+        <h2>Scraping de vacantes por demanda</h2>
+        <p class="sub">El comercial dispara, revisa un preview y decide qué guardar.</p>
+      </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-caption">
+          <div class="fc-step"><span class="num">01</span><span class="name"></span><span class="cr badge badge--cr" hidden>Change request</span></div>
+          <h3 class="fc-title"></h3>
+          <p class="fc-desc"></p>
+        </div>
+        <div class="flow-rail">
+          <div class="flow-track"><span class="fill"></span><span class="pulse"></span></div>
+          <div class="flow-nodes">
+            <button class="flow-node" data-label="Disparo" data-title="Disparo desde la plataforma" data-desc="Un comercial pide las vacantes de una empresa puntual; la plataforma verifica que no se haya consultado hace poco."><span class="fn-dot">1</span><span class="fn-label">Disparo</span></button>
+            <button class="flow-node" data-label="Búsqueda" data-title="Búsqueda sin guardar" data-desc="Busca las vacantes recientes de esa empresa en Indeed y LinkedIn, sin guardar nada todavía."><span class="fn-dot">2</span><span class="fn-label">Búsqueda</span></button>
+            <button class="flow-node" data-label="Preview" data-title="Preview para el usuario" data-desc="Muestra el resultado en la plataforma para que el comercial revise y elija qué aceptar."><span class="fn-dot">3</span><span class="fn-label">Preview</span></button>
+            <button class="flow-node" data-label="Confirmación" data-title="Confirmación y guardado" data-desc="Las vacantes aceptadas se traen completas, se evalúa con IA su viabilidad remota y se guardan asociadas a la empresa."><span class="fn-dot">4</span><span class="fn-label">Confirmación</span></button>
+            <button class="flow-node" data-label="Trazabilidad" data-title="Trazabilidad de la corrida" data-desc="Cada corrida queda registrada: resultados, conteos y consumo."><span class="fn-dot">5</span><span class="fn-label">Trazabilidad</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="deploy" data-state="qa">
+        <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+        <span class="deploy-note">En QA. Antes de salir a producción falta decidir en qué máquina va a correr — objetivo Sprint 16.</span>
+      </div>
+
+      <div class="dock">
+        <div class="stack">
+          <span class="chips-label">Stack</span>
+          <span class="chip">n8n</span><span class="chip">Oxylabs</span><span class="chip">OpenAI</span><span class="chip">PostgreSQL</span><span class="chip">Solvo Platform</span>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · ODO</div>
+    </section>
+
+    <!-- ============================================================ ODO ·· media -->
+    <section class="slide slide--content slide--media-slide">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">On-Demand Openings</span>
+        <h2>La experiencia en Solvo Platform</h2>
+        <p class="sub">Dónde aparece el botón y cómo se ve el popup, dentro de la plataforma.</p>
+      </div></div>
+
+      <div class="media">
+        <div class="browser">
+          <div class="bar"><div class="traffic"><i></i><i></i><i></i></div><div class="url">solvoplatform.solvoglobal.com · Empresas</div></div>
+          <div class="viewport">
+            <div class="frame placeholder is-active" data-cap="Botón «Scrapear vacantes ahora»">
+              <div><span class="ph-badge">Captura pendiente</span>
+                <div class="ph-title">Botón «Scrapear vacantes ahora»</div>
+                <p class="ph-desc">En el detalle de la empresa (tab Vacantes) y en los listados globales de Empresas y Vacantes.</p>
+              </div>
+            </div>
+            <div class="frame placeholder" data-cap="Popup de scraping on-demand">
+              <div><span class="ph-badge">Captura pendiente</span>
+                <div class="ph-title">Popup de scraping on-demand</div>
+                <p class="ph-desc">Buscás la empresa; si se consultó hace poco queda bloqueada, y si no, muestra el listado preliminar para confirmar.</p>
+              </div>
+            </div>
+            <div class="frame placeholder video" data-cap="Video de la corrida on-demand">
+              <div><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                <div class="ph-title">Video de la corrida on-demand</div>
+                <p class="ph-desc">La búsqueda completa: disparar, revisar el preview y confirmar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="media-nav">
+          <button class="arrow" data-slide="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="dots"><button class="is-active" aria-label="1"></button><button aria-label="2"></button><button aria-label="3"></button></div>
+          <span class="cap"></span>
+          <button class="arrow" data-slide="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · ODO</div>
+    </section>
+
+    <!-- ============================================================ ECO ·· divider -->
+    <section class="slide slide--section">
+      <span class="sec-index">04 / 04</span>
+      <span class="eyebrow" data-reveal style="--i:0">ECO · Landing de Agendamiento</span>
+      <div class="sigla" data-reveal style="--i:1">ECO</div>
+      <h2 class="sec-title" data-reveal style="--i:2">Landing de Agendamiento</h2>
+      <p class="sec-scope" data-reveal style="--i:3">Una página propia con marca Solvo donde el prospecto elige día y hora y agenda su reunión. Reemplaza la página genérica de Microsoft Bookings.</p>
+    </section>
+
+    <!-- ============================================================ ECO ·· landing -->
+    <section class="slide slide--content slide--landing-slide">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">Landing de Agendamiento</span>
+        <h2>La landing en vivo · QA</h2>
+        <p class="sub">Integración real con el calendario, corriendo en QA.</p>
+      </div></div>
+
+      <div class="landing">
+        <div class="device-wrap">
+          <div class="device-toolbar">
+            <div class="seg">
+              <button data-device="desktop" class="is-active"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+              <button data-device="tablet"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg>Tablet</button>
+              <button data-device="mobile"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Mobile</button>
+            </div>
+            <a class="open-link" href="https://ambitious-field-079c8cb0f.7.azurestaticapps.net/booking" target="_blank" rel="noopener">Abrir landing<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          </div>
+          <div class="device-stage">
+            <div class="device" data-device="desktop">
+              <div class="browser">
+                <div class="bar"><div class="traffic"><i></i><i></i><i></i></div><div class="url">book.solvoglobal.com · QA</div></div>
+                <div class="viewport">
+                  <div class="frame-loading">Cargando la landing de QA…</div>
+                  <iframe title="Landing de Agendamiento (QA)" data-src="https://ambitious-field-079c8cb0f.7.azurestaticapps.net/booking" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <p class="a-lead">El prospecto llega ya identificado por la URL del cold email — <b>sin formulario</b>.</p>
+          <ul class="a-flow">
+            <li>Ve la disponibilidad real del calendario.</li>
+            <li>Elige día y hora y confirma.</li>
+            <li>Se crea la reunión con videollamada en Teams.</li>
+            <li>Recibe el correo de confirmación y descarga el <code>.ics</code>.</li>
+          </ul>
+          <div>
+            <span class="chips-label">Stack</span>
+            <div class="a-stack" style="margin-top:1cqh">
+              <span class="chip">Azure Static Web App</span><span class="chip">Azure Container App</span><span class="chip">Microsoft Graph</span><span class="chip">M365</span><span class="chip">Brevo</span><span class="chip">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="status" style="align-items:flex-start;text-align:left">
+            <span class="badge" data-state="none"><i class="dot"></i>Sin desplegar</span>
+            <span class="note" style="max-width:34ch">MVP con 4 bloqueantes de infraestructura. → Prod Sprint 15. Dominio definitivo <code>book.solvoglobal.com</code> pendiente de go-live.</span>
+          </div>
+        </aside>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14 · ECO</div>
+    </section>
+
+    <!-- ======================================================= PRÓXIMOS PASOS -->
+    <section class="slide slide--content slide--next">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow" data-reveal style="--i:0">Próximos pasos</span>
+        <h2 data-reveal style="--i:1">Qué sigue por proyecto</h2>
+      </div></div>
+      <div class="next-grid">
+        <div class="next-card" data-reveal style="--i:2">
+          <h3>Current Client Openings</h3>
+          <p class="step">Cargar el listado oficial de clientes y cerrar QA.</p>
+          <span class="target">→ Producción · Sprint 15 (31 jul)</span>
+        </div>
+        <div class="next-card" data-reveal style="--i:3">
+          <h3>Talent Pool Scraping</h3>
+          <p class="step">Instancia n8n dedicada en producción y cierre de QA de la captura de email.</p>
+          <span class="target">→ Producción · Sprint 16 (14 ago)</span>
+        </div>
+        <div class="next-card" data-reveal style="--i:4">
+          <h3>On-Demand Openings</h3>
+          <p class="step">Definir y aprovisionar la máquina destino en producción; el release de Solvo Platform con On-Demand entra a validación.</p>
+          <span class="target">→ Producción · Sprint 16 (14 ago)</span>
+        </div>
+        <div class="next-card" data-reveal style="--i:5">
+          <h3>Landing de Agendamiento</h3>
+          <p class="step">Resolver los 4 bloqueantes de infraestructura e integrar el despliegue real; luego Email Cold Outreach agenda con la landing.</p>
+          <span class="target">→ Producción · Sprint 15 (31 jul)</span>
+        </div>
+      </div>
+      <div class="slide-foot"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_White.png" alt="">Sprint Review 14</div>
+    </section>
+
+    <!-- ============================================================== CIERRE -->
+    <section class="slide slide--end">
+      <div class="cover-brand"><img src="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Logo_White.png" alt="Solvo GenAI"></div>
+      <h2 data-reveal style="--i:0">¿Preguntas?</h2>
+      <p class="end-sub" data-reveal style="--i:1">Gracias — Sprint Review 14 · Softgic Product Owner</p>
+    </section>
+
+  </div><!-- /stage -->
+
+  <!-- controls -->
+  <div class="controls">
+    <button class="ctrl" data-action="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>13</span></span>
+    <button class="ctrl" data-action="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    <button class="ctrl" data-action="fullscreen" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+  </div>
+</div>
+
+<script src="../../engine/deck.js"></script>
+<script src="../../engine/flow.js"></script>
+<script src="../../engine/media.js"></script>
+</body>
+</html>

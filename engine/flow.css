@@ -1,0 +1,114 @@
+/* ============================================================================
+   FLOW — the interactive pipeline (signature element), light theme.
+   Click a node or drag the scrubber; the active step's description rises into
+   the large caption zone above.
+   ============================================================================ */
+
+.flow { display: flex; flex-direction: column; gap: 1.6cqh; margin-top: 1.8cqh; flex: 1; }
+
+/* ---- caption zone (the prominent description) ---------------------------- */
+.flow-caption {
+  position: relative; min-height: 14cqh;
+  display: flex; flex-direction: column; justify-content: center; gap: 1cqh;
+}
+.flow-caption .fc-step {
+  font-family: var(--font-heading); font-weight: 600; font-size: 1.5cqh;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3);
+  display: flex; align-items: center; gap: 1cqw;
+}
+.flow-caption .fc-step .num { color: var(--energy-d); }
+.flow-caption .fc-title { font-size: 4cqh; line-height: 1.08; max-width: 32ch; color: var(--ink); }
+.flow-caption .fc-desc { font-size: 2.15cqh; color: var(--ink-2); line-height: 1.45; max-width: 66ch; }
+.flow-caption.swap .fc-title, .flow-caption.swap .fc-desc, .flow-caption.swap .fc-step { animation: fcIn .42s var(--ease); }
+@keyframes fcIn { from { opacity: 0; transform: translateY(1.4cqh); } to { opacity: 1; transform: none; } }
+
+/* ---- rail --------------------------------------------------------------- */
+.flow-rail { --node: 8.2cqh; position: relative; padding: 2.6cqh 1.5cqw 0.4cqh; user-select: none; }
+
+.flow-track {
+  position: absolute; left: calc(1.5cqw + var(--node) / 2); right: calc(1.5cqw + var(--node) / 2);
+  top: calc(2.6cqh + var(--node) / 2); height: 3px; transform: translateY(-1.5px);
+  background: var(--line); border-radius: 3px;
+}
+.flow-track .fill {
+  position: absolute; left: 0; top: 0; height: 100%; width: 0;
+  background: var(--grad-heat); border-radius: 3px;
+  transition: width .45s var(--ease);
+}
+.flow-track .pulse {
+  position: absolute; top: 50%; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--energy); box-shadow: 0 0 8px 2px rgba(241,149,86,.6);
+  transform: translate(-50%,-50%); opacity: .85;
+  animation: pulseRun 3.2s linear infinite;
+}
+@keyframes pulseRun { from { left: 0%; } to { left: 100%; } }
+
+.flow-nodes { position: relative; display: flex; justify-content: space-between; }
+.flow-node {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 1.4cqh;
+  width: calc(100% / var(--n)); padding: 0; color: inherit;
+}
+.flow-node .fn-dot {
+  width: var(--node); height: var(--node); border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-heading); font-weight: 700; font-size: 3cqh;
+  color: var(--ink-3);
+  background: var(--surface);
+  border: 2px solid var(--line-2);
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s var(--ease), border-color .3s, box-shadow .3s, color .3s, background .3s;
+  position: relative;
+}
+.flow-node .fn-label {
+  font-family: var(--font-heading); font-weight: 600; font-size: 1.65cqh; line-height: 1.2;
+  color: var(--ink-3); max-width: 15ch; text-align: center;
+  transition: color .3s;
+}
+.flow-node:hover .fn-dot { border-color: var(--energy); transform: translateY(-.4cqh); }
+.flow-node:hover .fn-label { color: var(--ink-2); }
+.flow-node:focus-visible { outline: none; }
+.flow-node:focus-visible .fn-dot { outline: 2px solid var(--violet); outline-offset: 3px; }
+
+/* active node blooms */
+.flow-node.is-active .fn-dot {
+  color: #fff;
+  background: linear-gradient(135deg, #F7B886, #E07E3A);
+  border-color: #F19556;
+  box-shadow: 0 0 0 6px rgba(241,149,86,.16), 0 10px 22px rgba(224,126,58,.4);
+  transform: translateY(-.6cqh) scale(1.06);
+}
+.flow-node.is-active .fn-label { color: var(--ink); }
+.flow-node.done .fn-dot { border-color: var(--color-primary-300); color: var(--energy-d); background: var(--color-primary-50); }
+
+/* change-request node */
+.flow-node.is-cr .fn-dot::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px dashed var(--energy); animation: spin 9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.flow-node.is-cr .fn-tag {
+  position: absolute; top: -3.4cqh; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.25cqh;
+  letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+  color: var(--energy-d); padding: .5cqh 1cqh; border-radius: var(--radius-full);
+  background: #FEF3EC; border: 1px solid rgba(224,126,58,.5);
+}
+
+/* ---- deployment status band (below the steps) --------------------------- */
+.deploy {
+  margin-top: 2cqh;
+  display: flex; align-items: center; gap: 1.6cqw;
+  padding: 1.7cqh 2.2cqh; border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+}
+.deploy .badge { font-size: 1.9cqh; flex-shrink: 0; }
+.deploy .deploy-note { font-size: 1.95cqh; color: var(--ink-2); line-height: 1.4; }
+.deploy[data-state="qa"]   { background: #FEFBF4; border-color: rgba(245,158,11,.32); }
+.deploy[data-state="none"] { background: var(--surface-2); border-color: var(--line-2); }
+.deploy[data-state="prod"] { background: #F1FBF4; border-color: rgba(22,163,74,.30); }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-track .pulse, .flow-node.is-cr .fn-dot::after { animation: none; }
+  .flow-caption.swap .fc-title, .flow-caption.swap .fc-desc, .flow-caption.swap .fc-step { animation: none; }
+}
