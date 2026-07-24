@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "_comment": "trailingSlash true: sin la barra final el navegador resolvería 'assets/x.png' contra el directorio padre y las imágenes darían 404.",
   "trailingSlash": true,
   "headers": [
     {

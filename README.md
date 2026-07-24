@@ -48,3 +48,8 @@ Portada de sección = una frase de alcance; nunca el número de épica (nombre c
 ## Deploy
 
 Estático en Vercel (raíz del proyecto, sin build). `vercel.json` incluido.
+
+Dos notas sobre esa config:
+
+- `trailingSlash: true` — sin la barra final, el navegador resolvería una ruta relativa como `assets/x.png` contra el directorio padre y daría 404.
+- **No agregar claves propias a `vercel.json`** (por ejemplo un `_comment`): Vercel lo valida contra un esquema estricto y cualquier propiedad desconocida hace **fallar el build**. Cuando el build falla, Vercel deja vivo el último deploy exitoso, así que el sitio parece "viejo" en vez de roto — un síntoma engañoso.
