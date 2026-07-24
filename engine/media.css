@@ -24,13 +24,22 @@
 .browser .viewport { position: relative; flex: 1; background: var(--surface); overflow: hidden; }
 
 /* =============================================================== ODO media = */
-.media { display: grid; grid-template-columns: 1fr; gap: 2cqh; margin-top: 2.4cqh; flex: 1; min-height: 0; }
-.media .browser { height: 100%; }
+/* column flex + centred items: the browser takes the leftover height and its
+   aspect-ratio derives the width, so the screenshot fills as much as it can. */
+.media { display: flex; flex-direction: column; align-items: center; gap: 1.6cqh; margin-top: 1.6cqh; flex: 1; min-height: 0; }
+.media .browser { flex: 1 1 auto; min-height: 0; aspect-ratio: 2732 / 2048; width: auto; max-width: 100%; }
+.media .media-nav { flex: 0 0 auto; }
 .media .frame {
   position: absolute; inset: 0; opacity: 0; transform: scale(1.02);
   transition: opacity .5s var(--ease), transform .5s var(--ease);
-  display: grid; place-items: center; text-align: center; padding: 4cqh;
+  display: grid; place-items: center; text-align: center; padding: 0;
 }
+.media .frame.placeholder { padding: 4cqh; }
+
+/* compact head so the screenshot window gets the room */
+.slide--media-slide { padding-top: 4.5cqh; padding-bottom: 5.5cqh; }
+.slide--media-slide .slide-head .titles h2 { font-size: 3.4cqh; margin-top: .6cqh; }
+.slide--media-slide .slide-head .titles .sub { font-size: 1.7cqh; margin-top: .7cqh; }
 .media .frame.is-active { opacity: 1; transform: none; }
 .media .frame.placeholder {
   background:
