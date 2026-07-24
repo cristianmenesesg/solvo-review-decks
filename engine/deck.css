@@ -184,12 +184,12 @@ p { margin: 0; line-height: 1.5; }
 .cover-projects .cp b { color: #FBBF77; font-weight: 700; }
 
 /* =============================================================== SECTION === */
-.slide--section .sigla {
-  font-family: var(--font-heading); font-weight: 800;
-  font-size: 15cqh; line-height: .9; letter-spacing: -.04em;
-  color: rgba(255,255,255,.16);
+.slide--section .sec-rule {
+  display: block; width: 7cqh; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, #F19556, #FBBF77);
+  margin-bottom: 3.2cqh;
 }
-.slide--section .sec-title { font-size: 6.4cqh; margin: 1cqh 0 2.4cqh; max-width: 18ch; }
+.slide--section .sec-title { font-size: 7.2cqh; margin: 0 0 2.8cqh; max-width: 17ch; }
 .slide--section .sec-scope { font-size: 2.6cqh; color: rgba(255,255,255,.9); max-width: 52ch; line-height: 1.4; }
 .slide--section .sec-index {
   position: absolute; top: 7cqh; right: 8cqw;
