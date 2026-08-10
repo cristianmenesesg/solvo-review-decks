@@ -22,16 +22,23 @@
   h1 .hl{background:linear-gradient(100deg,#E07E3A,#775AE5);-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{color:#4B5563;font-size:1.15rem;max-width:60ch;line-height:1.5}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:6vh}
-  a.card{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+  .card{position:relative;overflow:hidden;
     background:#fff;border:1px solid #E5E7EB;border-radius:16px;
-    padding:26px;box-shadow:0 1px 3px rgba(17,24,39,.06);
+    box-shadow:0 1px 3px rgba(17,24,39,.06);
     transition:transform .25s cubic-bezier(.22,.61,.36,1),border-color .25s,box-shadow .25s}
-  a.card:hover{transform:translateY(-4px);border-color:#F7B886;box-shadow:0 18px 40px rgba(224,126,58,.18)}
-  a.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#E07E3A,#F19556)}
+  .card:hover{transform:translateY(-4px);border-color:#F7B886;box-shadow:0 18px 40px rgba(224,126,58,.18)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#E07E3A,#F19556)}
+  .card-main{display:block;text-decoration:none;color:inherit;padding:26px 26px 20px}
   .card .k{font-family:var(--font-heading);font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#9CA3AF}
   .card h2{font-family:var(--font-heading);font-weight:700;font-size:1.5rem;margin:.5rem 0 .3rem;color:#111827}
   .card p{margin:.2rem 0 1.2rem;color:#4B5563;font-size:.95rem;line-height:1.45}
   .card .go{font-family:var(--font-heading);font-weight:600;font-size:.9rem;color:#E07E3A;display:inline-flex;align-items:center;gap:.5em}
+  .card .dl{display:inline-flex;align-items:center;gap:.5em;margin:0 26px 22px;
+    font-family:var(--font-heading);font-weight:600;font-size:.82rem;color:#4B5563;text-decoration:none;
+    padding:.5em .9em;border:1px solid #E5E7EB;border-radius:9999px;background:#F9FAFB;
+    transition:border-color .2s,color .2s,background .2s}
+  .card .dl:hover{border-color:#F7B886;color:#E07E3A;background:#FEF3EC}
+  .card .dl svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .foot{margin-top:9vh;color:#9CA3AF;font-size:.85rem}
 </style>
 </head>
@@ -43,12 +50,25 @@
     <p class="sub">Decks HTML animados para las revisiones de sprint — navegación con teclado, pantalla completa y entrega de valor por proyecto.</p>
 
     <div class="grid">
-      <a class="card" href="reviews/sprint-14/">
-        <div class="k">Sprint 14 · 6–17 jul 2026</div>
-        <h2>Sprint Review 14</h2>
-        <p>Current Client Openings · Talent Pool Scraping · On-Demand Openings · Landing de Agendamiento.</p>
-        <span class="go">Abrir deck →</span>
-      </a>
+      <div class="card">
+        <a class="card-main" href="reviews/sprint-15/">
+          <div class="k">Sprint 15 · 21–31 jul 2026</div>
+          <h2>Sprint Review 15</h2>
+          <p>Solvo Recruiter Platform · Landing de Agendamiento · Solvo Sales Platform camino al handoff.</p>
+          <span class="go">Abrir deck →</span>
+        </a>
+      </div>
+      <div class="card">
+        <a class="card-main" href="reviews/sprint-14/">
+          <div class="k">Sprint 14 · 6–17 jul 2026</div>
+          <h2>Sprint Review 14</h2>
+          <p>Current Client Openings · Talent Pool Scraping · On-Demand Openings · Landing de Agendamiento.</p>
+          <span class="go">Abrir deck →</span>
+        </a>
+        <a class="dl" href="reviews/sprint-14/sprint-14.pptx" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>Descargar .pptx
+        </a>
+      </div>
     </div>
 
     <p class="foot">Brand Solvo GenAI · tokens vendorizados del design system.</p>
