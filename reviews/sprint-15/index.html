@@ -29,8 +29,24 @@
   /* Las grillas de tarjetas se centran en el alto disponible. */
   .next-grid, .pack-grid { flex: 1; min-height: 0; align-content: center; }
 
-  /* Paquete de entrega — Solvo Sales Platform */
-  .pack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqh 2.2cqw; margin-top: 3.2cqh; }
+  /* La última tarjeta del paquete acompaña al frente que sigue. */
+  .next-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3cqw; }
+  .next-card--wide .nc-body { display: flex; flex-direction: column; gap: 1.2cqh; }
+  .proto-link {
+    display: inline-flex; align-items: center; gap: .7cqw; white-space: nowrap;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.7cqh;
+    color: var(--ink-2); text-decoration: none;
+    padding: 1.1cqh 1.6cqh; border: 1px solid var(--line); border-radius: var(--radius-full);
+    background: var(--surface); transition: border-color .2s, color .2s, background .2s;
+  }
+  .proto-link:hover { border-color: var(--energy); color: var(--energy-d); background: var(--surface-2); }
+  .proto-link svg { width: 1.9cqh; height: 1.9cqh; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Paquete de entrega — Solvo Sales Platform: 5 tarjetas, la segunda fila centrada. */
+  .pack-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2cqh 2.2cqw; margin-top: 3.2cqh; }
+  .pack-card { grid-column: span 2; }
+  .pack-card:nth-child(4) { grid-column: 2 / span 2; }
+  .pack-card:nth-child(5) { grid-column: 4 / span 2; }
   .pack-card {
     background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-xl);
     padding: 2.4cqh; display: flex; flex-direction: column; gap: 1cqh;
@@ -44,11 +60,6 @@
     background: var(--color-success-light); color: var(--color-success-dark);
     display: grid; place-items: center; font-size: 1.5cqh; font-weight: 700;
   }
-  .pack-card--out { background: var(--grad-sign); border-color: transparent; justify-content: center; }
-  .pack-card--out::before { background: #FBBF77; }
-  .pack-card--out .pk-when { font-family: var(--font-heading); font-weight: 800; font-size: 3.4cqh; color: #fff; line-height: 1.1; }
-  .pack-card--out .pk-lbl { font-family: var(--font-heading); font-weight: 600; font-size: 1.5cqh; letter-spacing: .2em; text-transform: uppercase; color: #FBBF77; }
-  .pack-card--out p { color: rgba(255,255,255,.86); }
 </style>
 </head>
 <body>
@@ -91,7 +102,7 @@
         <div class="agenda-item" data-reveal style="--i:4">
           <span class="ai-sigla">SPL<small>14 historias</small></span>
           <span class="ai-name">Solvo Sales Platform<small>Los cinco pipelines del producto, listos para entregar</small></span>
-          <span class="badge" data-state="prod"><i class="dot"></i>Handoff · sprint 16</span>
+          <span class="badge" data-state="prod"><i class="dot"></i>Handoff · sprint 17</span>
         </div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 15</div>
@@ -337,11 +348,6 @@
           <h3>Purga automática</h3>
           <p>Las vacantes antiguas se depuran solas: la base se mantiene sin intervención de nadie.</p>
         </div>
-        <div class="pack-card pack-card--out" data-reveal style="--i:8">
-          <span class="pk-lbl">Handoff</span>
-          <span class="pk-when">14 de agosto</span>
-          <p>El paquete se entrega al equipo de Solvo en el Sprint 16.</p>
-        </div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 15 · SPL</div>
     </section>
@@ -366,12 +372,20 @@
         <div class="next-card" data-reveal style="--i:4">
           <h3>Solvo Sales Platform</h3>
           <p class="step">Handoff operacional del producto: documentación, runbooks y transferencia al equipo de Solvo.</p>
-          <span class="target">→ Handoff · Sprint 16 (14 ago)</span>
+          <span class="target">→ Handoff · Sprint 17 (28 ago)</span>
         </div>
         <div class="next-card" data-reveal style="--i:5">
           <h3>Landing de Agendamiento · Release 2</h3>
           <p class="step">Se construye completa en el Sprint 16 —vitrina de talento, asociación de vacante a perfil y medición— detrás del MVP.</p>
           <span class="target">→ Producción · Sprint 17 (28 ago)</span>
+        </div>
+        <div class="next-card next-card--wide" data-reveal style="--i:6">
+          <div class="nc-body">
+            <h3>Reporte de Estatus del Sistema</h3>
+            <p class="step">Cada semana, por correo: cuánto material detectó el ecosistema comercial y con qué calidad, cuánto outreach despachó, si los pipelines se ejecutaron bien y cuánto consumió de cada proveedor externo. Hoy eso solo se sabe consultando la base a mano.</p>
+            <span class="target">→ Se construye en el Sprint 16 · Producción Sprint 17 (28 ago)</span>
+          </div>
+          <a class="proto-link" href="https://solvo-genai-prototypes.vercel.app/prototypes/solvo-sales-platform-status-report/sales-status-report-preview.html" target="_blank" rel="noopener">Ver el prototipo<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         </div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 15</div>
