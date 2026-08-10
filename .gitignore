@@ -10,3 +10,8 @@ Thumbs.db
 .vercel
 node_modules/
 dist/
+
+# Tooling del export a PowerPoint
+pptx/.venv/
+pptx/out/
+pptx/__pycache__/

@@ -37,6 +37,24 @@ Abrir `http://localhost:3000/reviews/sprint-14/` (el puerto lo indica `serve`).
 5. **Imágenes empotradas**: las capturas y los logos van **dentro del HTML/CSS como data URI** (WebP en base64), no como archivos referenciados. Así el deck no depende de cómo se sirva la página: si carga el HTML, cargan las imágenes. Los PNG originales quedan en `reviews/<sprint>/assets/` como fuente para regenerar.
 6. Añadir una card al hub (`index.html`).
 
+## Versión PowerPoint
+
+Cada review tiene además un `.pptx` en `reviews/<sprint>/`, descargable desde el hub. Es un **entregable de archivo**: texto y formas reales (buscable, no un carrusel de imágenes), pensado para adjuntar a un acta o al paquete de handoff.
+
+No se genera parseando el HTML. El HTML se cierra y se aprueba primero, y recién entonces se autora el PPTX slide por slide en `pptx/sprint_NN.py`, sobre el kit de marca compartido `pptx/theme.py`. El contenido está congelado cuando arranca la derivación, así que no hay dos fuentes de verdad — hay una fuente y una derivación puntual.
+
+```bash
+cd pptx
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python sprint_14.py                                    # genera el .pptx
+.venv/bin/python verify_pptx.py ../reviews/sprint-14/sprint-14.pptx
+.venv/bin/python preview.py ../reviews/sprint-14/sprint-14.pptx out/   # PNG por slide
+```
+
+`preview.py` existe porque no hay PowerPoint ni LibreOffice en el entorno: lee el `.pptx` ya generado y lo dibuja con Pillow, así el layout se verifica contra lo que quedó en el archivo. **Las decisiones de diseño, lo que se pierde respecto del HTML y los puntos abiertos están en [pptx/DESIGN.md](pptx/DESIGN.md)** — leerlo antes de autorar un deck nuevo.
+
+Dos cosas que muerden: Poppins y Open Sans no vienen instaladas en un Windows corporativo (los TTF están en `pptx/assets/fonts/` para instalarlos), y el glifo `→` no existe en ninguna de las dos, así que las flechas se dibujan como forma.
+
 ## Convenciones de review
 
 Portada de sección = una frase de alcance; nunca el número de épica (nombre completo); títulos de HU literales cuando se citan; siglas vigentes (CCO, TPS, ODO, ECO). Estados de despliegue y próximos pasos salen de `shared/tracking/Roadmap-Entregas-Handoff.md`.
