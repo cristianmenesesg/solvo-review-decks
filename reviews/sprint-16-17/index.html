@@ -16,8 +16,11 @@
     -webkit-background-clip: text; background-clip: text;
   }
 
-  /* Cuatro frentes: la lista se centra en el alto disponible. */
-  .slide--agenda .agenda-list { flex: 1; min-height: 0; justify-content: center; gap: 1.4cqh; }
+  /* Las capturas de la plataforma son 2360×1640; el marco del motor asume 4:3. */
+  .media .browser { aspect-ratio: 2360 / 1640; }
+
+  /* Cinco frentes: la lista se centra en el alto disponible. */
+  .slide--agenda .agenda-list { flex: 1; min-height: 0; justify-content: center; gap: 1.2cqh; }
   .agenda-item .ai-sigla small {
     display: block; font-family: var(--font-body); font-weight: 600; font-size: 1.4cqh;
     color: var(--ink-3); margin-top: .4cqh; letter-spacing: .02em;
@@ -77,6 +80,7 @@
       <div class="cover-projects" data-reveal style="--i:3">
         <span class="cp"><b>ECO</b> · Landing de Agendamiento</span>
         <span class="cp"><b>RES</b> · Reporte de Estatus</span>
+        <span class="cp"><b>ODO</b> · On-Demand Openings</span>
         <span class="cp"><b>SPL</b> · Solvo Platform</span>
         <span class="cp"><b>SRP</b> · Solvo Recruiter Platform</span>
       </div>
@@ -86,7 +90,7 @@
     <section class="slide slide--content slide--agenda">
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Agenda</span>
-        <h2 data-reveal style="--i:1">Los cuatro frentes de estos dos sprints</h2>
+        <h2 data-reveal style="--i:1">Los cinco frentes de estos dos sprints</h2>
       </div></div>
       <div class="agenda-list">
         <div class="agenda-item" data-reveal style="--i:2">
@@ -100,11 +104,16 @@
           <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
         </div>
         <div class="agenda-item" data-reveal style="--i:4">
+          <span class="ai-sigla">ODO<small>salida a prod</small></span>
+          <span class="ai-name">On-Demand Openings<small>El scraping de vacantes por demanda desde Solvo Platform, disponible en producción</small></span>
+          <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
+        </div>
+        <div class="agenda-item" data-reveal style="--i:5">
           <span class="ai-sigla">SPL<small>18 historias</small></span>
           <span class="ai-name">Solvo Sales Platform — Mantenimiento y Ajustes<small>Las herramientas que hacen repartible el material detectado</small></span>
           <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
         </div>
-        <div class="agenda-item" data-reveal style="--i:5">
+        <div class="agenda-item" data-reveal style="--i:6">
           <span class="ai-sigla">SRP<small>6 historias</small></span>
           <span class="ai-name">Solvo Recruiter Platform<small>El pipeline de talento en producción y el conocimiento listo para el handoff</small></span>
           <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
@@ -115,7 +124,7 @@
 
     <!-- ============================================================ ECO ·· divider -->
     <section class="slide slide--section">
-      <span class="sec-index">01 / 04</span>
+      <span class="sec-index">01 / 05</span>
       <span class="sec-rule" data-reveal style="--i:0"></span>
       <h2 class="sec-title" data-reveal style="--i:1">Landing de Agendamiento</h2>
       <p class="sec-scope" data-reveal style="--i:2">El MVP salió a producción y el prospecto ya agenda en la landing propia; el Release 2 dejó construido el showcase de talento que la convierte en vitrina.</p>
@@ -287,7 +296,7 @@
 
     <!-- ============================================================ RES ·· divider -->
     <section class="slide slide--section">
-      <span class="sec-index">02 / 04</span>
+      <span class="sec-index">02 / 05</span>
       <span class="sec-rule" data-reveal style="--i:0"></span>
       <h2 class="sec-title" data-reveal style="--i:1">Reporte de Estatus del Sistema</h2>
       <p class="sec-scope" data-reveal style="--i:2">Dos correos semanales, ya en producción: el reporte de funnel del agendamiento y el reporte de estatus del sistema — qué produjo el ecosistema, cómo se ejecutaron sus pipelines y cuánto consumió de cada proveedor externo.</p>
@@ -347,9 +356,91 @@
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17 · RES</div>
     </section>
 
+    <!-- ============================================================ ODO ·· divider -->
+    <section class="slide slide--section">
+      <span class="sec-index">03 / 05</span>
+      <span class="sec-rule" data-reveal style="--i:0"></span>
+      <h2 class="sec-title" data-reveal style="--i:1">On-Demand Openings</h2>
+      <p class="sec-scope" data-reveal style="--i:2">Desde Solvo Platform, el comercial pide las vacantes de una empresa puntual y revisa el resultado antes de guardarlo, sin esperar al barrido semanal — ahora sobre producción.</p>
+    </section>
+
+    <!-- ============================================================ ODO ·· flow -->
+    <section class="slide slide--content slide--flow">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">On-Demand Openings</span>
+        <h2>Scraping de vacantes por demanda, en producción</h2>
+        <p class="sub">El comercial dispara, revisa un preview y decide qué guardar.</p>
+      </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-caption">
+          <div class="fc-step"><span class="num">01</span><span class="name"></span><span class="cr badge badge--cr" hidden>Change request</span></div>
+          <h3 class="fc-title"></h3>
+          <p class="fc-desc"></p>
+        </div>
+        <div class="flow-rail">
+          <div class="flow-track"><span class="fill"></span><span class="pulse"></span></div>
+          <div class="flow-nodes">
+            <button class="flow-node" data-label="Disparo" data-title="Disparo desde la plataforma" data-desc="Un comercial pide las vacantes de una empresa puntual; la plataforma verifica que no se haya consultado hace poco."><span class="fn-dot">1</span><span class="fn-label">Disparo</span></button>
+            <button class="flow-node" data-label="Búsqueda" data-title="Búsqueda sin guardar" data-desc="Busca las vacantes recientes de esa empresa en Indeed y LinkedIn, sin guardar nada todavía."><span class="fn-dot">2</span><span class="fn-label">Búsqueda</span></button>
+            <button class="flow-node" data-label="Preview" data-title="Preview para el usuario" data-desc="Muestra el resultado en la plataforma para que el comercial revise y elija qué aceptar."><span class="fn-dot">3</span><span class="fn-label">Preview</span></button>
+            <button class="flow-node" data-label="Confirmación" data-title="Confirmación y guardado" data-desc="Las vacantes aceptadas se traen completas, se evalúa con IA su viabilidad remota y se guardan asociadas a la empresa."><span class="fn-dot">4</span><span class="fn-label">Confirmación</span></button>
+            <button class="flow-node" data-label="Trazabilidad" data-title="Trazabilidad de la ejecución" data-desc="Cada ejecución queda registrada: resultados, conteos y consumo."><span class="fn-dot">5</span><span class="fn-label">Trazabilidad</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="deploy" data-state="prod">
+        <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
+        <span class="deploy-note">El pipeline quedó desplegado en producción y la función queda disponible para el equipo comercial desde Solvo Platform.</span>
+      </div>
+
+      <div class="dock">
+        <div class="stack">
+          <span class="chips-label">Stack</span>
+          <span class="chip">n8n</span><span class="chip">Oxylabs</span><span class="chip">OpenAI</span><span class="chip">PostgreSQL</span><span class="chip">Solvo Platform</span>
+        </div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17 · ODO</div>
+    </section>
+
+    <!-- ============================================================ ODO ·· capturas -->
+    <section class="slide slide--content slide--media-slide">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow">On-Demand Openings</span>
+        <h2>La experiencia en Solvo Platform</h2>
+        <p class="sub">Dónde dispara el comercial y cómo revisa el resultado.</p>
+      </div></div>
+
+      <div class="media">
+        <div class="browser">
+          <div class="bar"><div class="traffic"><i></i><i></i><i></i></div><div class="url">solvoplatform.solvoglobal.com · Sales Hub</div></div>
+          <div class="viewport">
+            <div class="frame is-active" data-cap="Disparo desde el listado de Empresas">
+              <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202360%201640'%3E%3Crect%20width='2360'%20height='1640'%20fill='%23F3F1FA'/%3E%3Ctext%20x='50%25'%20y='50%25'%20font-family='sans-serif'%20font-size='72'%20fill='%239CA3AF'%20text-anchor='middle'%3ECaptura%201%20%C2%B7%20pendiente%3C/text%3E%3C/svg%3E" alt="Captura 1 de On-Demand Openings en Solvo Platform (pendiente)">
+            </div>
+            <div class="frame" data-cap="Preview antes de guardar">
+              <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202360%201640'%3E%3Crect%20width='2360'%20height='1640'%20fill='%23F3F1FA'/%3E%3Ctext%20x='50%25'%20y='50%25'%20font-family='sans-serif'%20font-size='72'%20fill='%239CA3AF'%20text-anchor='middle'%3ECaptura%202%20%C2%B7%20pendiente%3C/text%3E%3C/svg%3E" alt="Captura 2 de On-Demand Openings en Solvo Platform (pendiente)">
+            </div>
+            <div class="frame" data-cap="Vacantes guardadas en la empresa">
+              <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202360%201640'%3E%3Crect%20width='2360'%20height='1640'%20fill='%23F3F1FA'/%3E%3Ctext%20x='50%25'%20y='50%25'%20font-family='sans-serif'%20font-size='72'%20fill='%239CA3AF'%20text-anchor='middle'%3ECaptura%203%20%C2%B7%20pendiente%3C/text%3E%3C/svg%3E" alt="Captura 3 de On-Demand Openings en Solvo Platform (pendiente)">
+            </div>
+          </div>
+        </div>
+        <div class="media-nav">
+          <button class="arrow" data-slide="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="dots"><button class="is-active" aria-label="1"></button><button aria-label="2"></button><button aria-label="3"></button></div>
+          <span class="cap"></span>
+          <button class="arrow" data-slide="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17 · ODO</div>
+    </section>
+
     <!-- ============================================================ SPL ·· divider -->
     <section class="slide slide--section">
-      <span class="sec-index">03 / 04</span>
+      <span class="sec-index">04 / 05</span>
       <span class="sec-rule" data-reveal style="--i:0"></span>
       <h2 class="sec-title" data-reveal style="--i:1">Mantenimiento y Ajustes</h2>
       <p class="sec-scope" data-reveal style="--i:2">Herramientas para los roles de coordinación: fecha única de detección, exportación estandarizada con trazabilidad, industria normalizada y contactos filtrados por rol decisor.</p>
@@ -398,7 +489,7 @@
 
     <!-- ============================================================ SRP ·· divider -->
     <section class="slide slide--section">
-      <span class="sec-index">04 / 04</span>
+      <span class="sec-index">05 / 05</span>
       <span class="sec-rule" data-reveal style="--i:0"></span>
       <h2 class="sec-title" data-reveal style="--i:1">Solvo Recruiter Platform</h2>
       <p class="sec-scope" data-reveal style="--i:2">El pipeline de talento quedó operando en producción con su cadencia configurable, y el conocimiento del producto quedó preparado para el handoff.</p>
@@ -481,7 +572,7 @@
   <!-- controls -->
   <div class="controls">
     <button class="ctrl" data-action="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>14</span></span>
+    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>17</span></span>
     <button class="ctrl" data-action="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <button class="ctrl" data-action="fullscreen" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
   </div>
