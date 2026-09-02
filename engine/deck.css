@@ -267,6 +267,24 @@ p { margin: 0; line-height: 1.5; }
 }
 .counter b { color: var(--ink); }
 
+/* ------------------------------------------------------------- home link --
+   Vuelta al índice de decks. deck.js lo inyecta en .stage y solo lo muestra
+   en la primera y la última slide (fondo de firma: colores en blanco). */
+.home-link {
+  position: absolute; top: 3.4cqh; right: 2.6cqw; z-index: 30;
+  display: inline-flex; align-items: center; gap: .55em;
+  font-family: var(--font-heading); font-weight: 600; font-size: 1.6cqh; letter-spacing: .04em;
+  color: rgba(255,255,255,.72); text-decoration: none;
+  padding: .95cqh 1.5cqh; border: 1px solid rgba(255,255,255,.26);
+  border-radius: var(--radius-full); background: rgba(255,255,255,.07);
+  opacity: 0; pointer-events: none;
+  transition: opacity .45s var(--ease), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+.home-link.is-visible { opacity: 1; pointer-events: auto; }
+.home-link:hover { color: #fff; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); }
+.home-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.home-link svg { width: 1.7cqh; height: 1.7cqh; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
 /* persistent footer mark on content slides */
 .slide-foot {
   position: absolute; left: 8cqw; bottom: 3cqh; display: flex; align-items: center; gap: .8cqw;

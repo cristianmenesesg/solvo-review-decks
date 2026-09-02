@@ -22,6 +22,18 @@
 
   function clamp(i) { return Math.max(0, Math.min(slides.length - 1, i)); }
 
+  /* ---- home link — vuelta al índice, solo en la primera y la última slide */
+  var home = null;
+  var stage = deck.querySelector(".stage");
+  if (stage) {
+    home = document.createElement("a");
+    home.className = "home-link";
+    home.href = "../../";
+    home.setAttribute("aria-label", "Volver al índice de presentaciones");
+    home.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Índice</span>';
+    stage.appendChild(home);
+  }
+
   function show(i, opts) {
     i = clamp(i);
     idx = i;
@@ -29,6 +41,7 @@
       s.classList.toggle("is-active", n === i);
       s.classList.toggle("is-past", n < i);
     });
+    if (home) home.classList.toggle("is-visible", i === 0 || i === slides.length - 1);
     if (els.counterCur) els.counterCur.textContent = String(i + 1);
     if (els.bar) els.bar.style.width = (slides.length > 1 ? (i / (slides.length - 1)) * 100 : 100) + "%";
     if (!opts || !opts.silentHash) {

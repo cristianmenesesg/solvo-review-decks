@@ -10,7 +10,9 @@ Sitio estático (sin build) para las **presentaciones de Sprint Review** del equ
 index.html                     — hub: lista de decks de review
 assets/design-system/          — tokens.css + logos Solvo GenAI (vendorizados por copia)
 engine/                        — motor reutilizable entre decks
-  deck.css / deck.js           — slides 16:9, navegación, fullscreen, controles, progreso
+  deck.css / deck.js           — slides 16:9, navegación, fullscreen, controles, progreso,
+                                 enlace «Índice» de vuelta al hub (se inyecta solo; visible
+                                 únicamente en la primera y la última slide)
   flow.css / flow.js           — "pipeline vivo": nodos interactivos + scrubber (proyectos de automatización)
   media.css / media.js         — slider de capturas + toggle de dispositivo del iframe
 reviews/<sprint>/index.html    — un deck por review
