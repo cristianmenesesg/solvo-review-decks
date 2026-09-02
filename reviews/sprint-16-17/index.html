@@ -95,7 +95,7 @@
       <div class="agenda-list">
         <div class="agenda-item" data-reveal style="--i:2">
           <span class="ai-sigla">ECO<small>21 historias</small></span>
-          <span class="ai-name">Landing de Agendamiento<small>El MVP salió a producción; el showcase de talento quedó construido detrás</small></span>
+          <span class="ai-name">Landing de Agendamiento<small>El MVP en producción, con el reporte de funnel midiendo el recorrido del prospecto</small></span>
           <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
         </div>
         <div class="agenda-item" data-reveal style="--i:3">
@@ -111,7 +111,7 @@
         <div class="agenda-item" data-reveal style="--i:5">
           <span class="ai-sigla">SPL<small>18 historias</small></span>
           <span class="ai-name">Solvo Sales Platform — Mantenimiento y Ajustes<small>Las herramientas que hacen repartible el material detectado</small></span>
-          <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
+          <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
         </div>
         <div class="agenda-item" data-reveal style="--i:6">
           <span class="ai-sigla">SRP<small>6 historias</small></span>
@@ -122,12 +122,43 @@
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17</div>
     </section>
 
+    <!-- ================================================= DESPLIEGUES A PROD -->
+    <section class="slide slide--content slide--next">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow" data-reveal style="--i:0">Sprints 16–17</span>
+        <h2 data-reveal style="--i:1">Despliegues a producción</h2>
+        <p class="sub" data-reveal style="--i:2">Tres pipelines salieron a producción en esta ventana.</p>
+      </div></div>
+      <div class="pack-grid">
+        <div class="pack-card" data-reveal style="--i:3">
+          <span class="pk-tick">✓</span>
+          <h3>Current Client Openings</h3>
+          <p>El pipeline de vacantes de los clientes actuales de Solvo, corriendo con el listado oficial de cuentas y el vendedor asignado a cada una.</p>
+        </div>
+        <div class="pack-card" data-reveal style="--i:4">
+          <span class="pk-tick">✓</span>
+          <h3>On-Demand Openings</h3>
+          <p>El scraping de vacantes por demanda desde Solvo Platform — el flujo y las pantallas, más adelante en esta review.</p>
+        </div>
+        <div class="pack-card" data-reveal style="--i:5">
+          <span class="pk-tick">✓</span>
+          <h3>Talent Pool Scraping</h3>
+          <p>El pipeline de talento de la plataforma de reclutamiento: esquema, seed y flujos desplegados, ejecutando con su cadencia configurable.</p>
+        </div>
+      </div>
+      <div class="deploy pack-deploy" data-state="prod">
+        <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
+        <span class="deploy-note">Junto con la Landing de Agendamiento y los dos reportes semanales, la ventana deja seis componentes nuevos operando en producción.</span>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17</div>
+    </section>
+
     <!-- ============================================================ ECO ·· divider -->
     <section class="slide slide--section">
       <span class="sec-index">01 / 05</span>
       <span class="sec-rule" data-reveal style="--i:0"></span>
       <h2 class="sec-title" data-reveal style="--i:1">Landing de Agendamiento</h2>
-      <p class="sec-scope" data-reveal style="--i:2">El MVP salió a producción y el prospecto ya agenda en la landing propia; el Release 2 dejó construido el showcase de talento que la convierte en vitrina.</p>
+      <p class="sec-scope" data-reveal style="--i:2">El MVP salió a producción: el prospecto ya agenda en la landing propia y cada paso de su recorrido queda medido.</p>
     </section>
 
     <!-- ============================================================ ECO ·· MVP en producción -->
@@ -234,60 +265,6 @@
           <div class="status" style="align-items:flex-start;text-align:left">
             <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
             <span class="note" style="max-width:34ch">Salió en la misma ventana que la landing, el 18 de agosto; mide desde los primeros envíos.</span>
-          </div>
-        </aside>
-      </div>
-      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17 · ECO</div>
-    </section>
-
-    <!-- ============================================================ ECO ·· Release 2 showcase -->
-    <section class="slide slide--content slide--landing-slide">
-      <div class="slide-head"><div class="titles">
-        <span class="eyebrow">Landing de Agendamiento — Release 2</span>
-        <h2>Showcase de talento en la landing</h2>
-        <p class="sub">La vacante del correo llega asociada a un perfil real, con su currículo en la landing.</p>
-      </div></div>
-
-      <div class="landing">
-        <div class="device-wrap">
-          <div class="device-toolbar">
-            <div class="seg">
-              <button data-device="desktop" class="is-active"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
-              <button data-device="tablet"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg>Tablet</button>
-              <button data-device="mobile"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Mobile</button>
-            </div>
-            <a class="open-link" href="https://solvo-genai-prototypes.vercel.app/prototypes/email-cold-outreach-booking-landing-release-2/landing-v2.html" target="_blank" rel="noopener">Abrir el prototipo<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-          </div>
-          <div class="device-stage">
-            <div class="device" data-device="desktop">
-              <div class="browser">
-                <div class="bar"><div class="traffic"><i></i><i></i><i></i></div><div class="url">Landing con showcase de talento · Release 2</div></div>
-                <div class="viewport">
-                  <div class="frame-loading">Cargando el showcase…</div>
-                  <iframe title="Landing con showcase de talento" data-src="https://solvo-genai-prototypes.vercel.app/prototypes/email-cold-outreach-booking-landing-release-2/landing-v2.html" loading="lazy"></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <aside>
-          <p class="a-lead">La landing deja de solo agendar: <b>muestra el talento</b> que responde a la vacante de la empresa.</p>
-          <ul class="a-flow">
-            <li>El flujo de cold outreach asocia cada vacante a un perfil del showcase.</li>
-            <li>La landing muestra los perfiles con su currículo en un panel de detalle.</li>
-            <li>Los eventos propios del showcase alimentan la medición del embudo.</li>
-            <li>Los currículos se administran desde la página de perfiles de la plataforma de reclutamiento.</li>
-          </ul>
-          <div>
-            <span class="chips-label">Stack</span>
-            <div class="a-stack" style="margin-top:1cqh">
-              <span class="chip">n8n</span><span class="chip">PostgreSQL</span><span class="chip">Azure Static Web App</span><span class="chip">Azure Container App</span>
-            </div>
-          </div>
-          <div class="status" style="align-items:flex-start;text-align:left">
-            <span class="badge" data-state="qa"><i class="dot"></i>Construido</span>
-            <span class="note" style="max-width:34ch">Sale a producción en el sprint 18, detrás del MVP ya productivo.</span>
           </div>
         </aside>
       </div>
@@ -480,9 +457,9 @@
           <p>El pipeline clasifica el cargo de cada contacto y guarda únicamente los niveles que pueden decidir una compra.</p>
         </div>
       </div>
-      <div class="deploy pack-deploy" data-state="qa">
-        <span class="badge" data-state="qa"><i class="dot"></i>En QA</span>
-        <span class="deploy-note">La reclasificación de las empresas ya cargadas y el filtro por industria en los listados cierran sobre esta base, en su misma iteración.</span>
+      <div class="deploy pack-deploy" data-state="prod">
+        <span class="badge" data-state="prod"><i class="dot"></i>En producción</span>
+        <span class="deploy-note">Las cinco capacidades quedaron desplegadas y operando en Solvo Platform.</span>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 16–17 · SPL</div>
     </section>
@@ -540,7 +517,7 @@
       <div class="next-grid">
         <div class="next-card" data-reveal style="--i:2">
           <h3>Landing de Agendamiento · Release 2</h3>
-          <p class="step">El showcase de talento sale a producción detrás del MVP; antes cierra la emisión de sus eventos en la landing.</p>
+          <p class="step">El showcase de talento —los perfiles con su currículo, asociados a la vacante del correo— sale a producción detrás del MVP.</p>
           <span class="target">→ Producción · Sprint 18 (11 sep)</span>
         </div>
         <div class="next-card" data-reveal style="--i:3">
