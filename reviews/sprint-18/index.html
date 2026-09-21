@@ -25,12 +25,10 @@
   /* .b .b-k se declara más abajo con la misma especificidad, así que acá se
      sube un nivel para que la sigla mande en la agenda. */
   .bento--duo .b .b-k { font-size: 2.4cqh; letter-spacing: .14em; color: var(--energy-d); }
-  .bento--duo .b--hero .b-k { color: #FBBF77; }
   .b-count {
     margin-top: 1.2cqh; font-family: var(--font-heading); font-weight: 700;
     font-size: 1.9cqh; letter-spacing: .04em; color: var(--ink-3);
   }
-  .b--hero .b-count { color: rgba(255,255,255,.72); }
 
   /* ---------------------------------------------------------------- BENTO --
      Grilla de 6 columnas: las tarjetas declaran su ancho con .b--2 / .b--4 /
@@ -61,24 +59,13 @@
   .b h3 { font-size: 2.65cqh; line-height: 1.15; }
   .b p  { font-size: 1.95cqh; color: var(--ink-2); line-height: 1.45; }
 
-  /* La tarjeta ancla: fondo de firma, tipografía en blanco. */
-  .b--hero { background: var(--grad-sign); border-color: transparent; }
-  .b--hero::before { background: linear-gradient(180deg, #FDBA8C, #F19556); }
-  .b--hero .b-k { color: #FBBF77; }
-  .b--hero h3 { color: #fff; }
-  .b--hero p { color: rgba(255,255,255,.88); }
-
   /* Tres tiles: el ancla ocupa las dos filas a la izquierda y los otros dos
      se apilan a la derecha, de modo que la grilla llegue al pie sin quedar
      rala. Con las filas estiradas, el texto se centra dentro del tile. */
   /* Grilla que llega al pie: las filas reparten el alto y el texto se centra
-     dentro del tile. La usan las slides de tres y de cuatro tiles, donde una
-     grilla ajustada al contenido dejaría la mitad del lienzo vacío. */
-  .bento--fill, .bento--three { grid-auto-rows: 1fr; align-content: stretch; margin-bottom: 2cqh; }
-  .bento--fill .b, .bento--three .b { justify-content: center; }
-  /* El tile alto lleva el texto al pie: el bloque de color queda como panel
-     y el texto como su leyenda, en vez de flotar en el medio. */
-  .bento--three .b--tall { grid-row: span 2; justify-content: flex-end; }
+     dentro del tile, en vez de dejar media slide vacía. */
+  .bento--fill { grid-auto-rows: 1fr; align-content: stretch; margin-bottom: 2cqh; }
+  .bento--fill .b { justify-content: center; }
 
   /* Siete tarjetas en tres filas: se aprieta el tipo y el padding. */
   .bento--dense { gap: 1.7cqh 1.5cqw; margin-top: 2.4cqh; }
@@ -115,8 +102,8 @@
         <span class="eyebrow" data-reveal style="--i:0">Agenda</span>
         <h2 data-reveal style="--i:1">Alcance del sprint, por frente</h2>
       </div></div>
-      <div class="bento bento--fill bento--duo">
-        <div class="b b--hero" data-reveal style="--i:2">
+      <div class="bento bento--duo">
+        <div class="b" data-reveal style="--i:2">
           <span class="b-k">SRP</span>
           <h3>Solvo Recruiter Platform</h3>
           <p>Búsqueda asistida por IA, configuración del presupuesto, estatus y notas del candidato, y exportación con trazabilidad.</p>
@@ -140,53 +127,42 @@
       <p class="sec-scope" data-reveal style="--i:2">Búsqueda de candidatos a partir de una descripción en lenguaje natural, con control de presupuesto, seguimiento por candidato y registro de lo exportado.</p>
     </section>
 
-    <!-- ======================================== SRP ·· búsqueda asistida -->
+    <!-- ============================================ SRP ·· lo entregado -->
     <section class="slide slide--content slide--bento">
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Solvo Recruiter Platform</span>
-        <h2 data-reveal style="--i:1">Búsqueda asistida por IA</h2>
+        <h2 data-reveal style="--i:1">Funciones entregadas</h2>
       </div></div>
-      <div class="bento bento--three">
-        <div class="b b--hero b--tall" data-reveal style="--i:2">
-          <span class="b-k">AI Search</span>
-          <h3>Búsqueda de candidatos a partir de una descripción en lenguaje natural</h3>
-          <p>El reclutador escribe el perfil que necesita —rol, ubicación, habilidades— y la plataforma construye las consultas, ejecuta la búsqueda sobre fuentes externas y carga los candidatos en la tabla a medida que los encuentra. Antes de lanzar muestra el costo estimado y lo valida contra el presupuesto disponible. La búsqueda programada y la asistida quedaron sobre el mismo motor.</p>
+      <div class="bento bento--dense bento--fill">
+        <div class="b" data-reveal style="--i:2">
+          <span class="b-k">Búsqueda</span>
+          <h3>Búsqueda a partir de una descripción en lenguaje natural</h3>
+          <p>El reclutador describe el perfil que necesita, ve el costo estimado antes de confirmar y los candidatos se cargan en la tabla a medida que la ejecución los encuentra.</p>
         </div>
         <div class="b" data-reveal style="--i:3">
-          <span class="b-k">Configuración</span>
+          <span class="b-k">Presupuesto</span>
           <h3>Página de configuración del presupuesto</h3>
-          <p>El administrador fija el techo de gasto mensual de la búsqueda asistida, consulta el saldo del período calculado sobre el consumo real de las ejecuciones y ve la proyección de costo de la cobertura configurada.</p>
+          <p>El administrador fija el techo de gasto mensual, consulta el saldo calculado sobre el consumo real de las ejecuciones y ve la proyección de costo de la cobertura configurada.</p>
         </div>
         <div class="b" data-reveal style="--i:4">
-          <span class="b-k">Acceso</span>
-          <h3>Ingreso de los usuarios de negocio con cuenta corporativa</h3>
-          <p>Reclutadores y administrador acceden a la plataforma con la cuenta de la organización, y cada rol ve las secciones que le corresponden.</p>
-        </div>
-      </div>
-      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 18</div>
-    </section>
-
-    <!-- ========================================== SRP ·· gestión del candidato -->
-    <section class="slide slide--content slide--bento">
-      <div class="slide-head"><div class="titles">
-        <span class="eyebrow" data-reveal style="--i:0">Solvo Recruiter Platform</span>
-        <h2 data-reveal style="--i:1">Gestión del candidato</h2>
-      </div></div>
-      <div class="bento bento--three">
-        <div class="b b--hero b--tall" data-reveal style="--i:2">
           <span class="b-k">Seguimiento</span>
           <h3>Estatus y notas por candidato</h3>
-          <p>Cada candidato registra en qué punto del proceso se encuentra —el estatus cambia al enviarle outreach— y admite notas sucesivas, cada una con el usuario que la escribió y la fecha, visibles para todo el equipo. El listado se consulta y filtra por estatus.</p>
+          <p>Cada candidato registra en qué punto del proceso está —el estatus cambia al enviarle outreach— y admite notas con su autor y su fecha, visibles para todo el equipo.</p>
         </div>
-        <div class="b" data-reveal style="--i:3">
+        <div class="b" data-reveal style="--i:5">
           <span class="b-k">Disponibilidad</span>
           <h3>Disponibilidad del pool al día</h3>
-          <p>La verificación de si un candidato sigue abierto a oportunidades quedó en un flujo único que se invoca a demanda, y el listado se acota a los candidatos con disponibilidad vigente.</p>
+          <p>La verificación de si un candidato sigue abierto a oportunidades quedó en un flujo único que se invoca a demanda, y el listado se acota a los que tienen disponibilidad vigente.</p>
         </div>
-        <div class="b" data-reveal style="--i:4">
+        <div class="b" data-reveal style="--i:6">
           <span class="b-k">Exportación</span>
           <h3>Exportación con registro de lo que salió</h3>
-          <p>El reclutador exporta a un archivo el recorte que tiene filtrado. Cada candidato guarda quién lo exportó, cuándo y cuántas veces, el listado se filtra por ese estado y la operación tiene un tope de volumen.</p>
+          <p>El reclutador exporta a un archivo el recorte filtrado. Cada candidato guarda quién lo exportó, cuándo y cuántas veces, y el listado se filtra por ese estado.</p>
+        </div>
+        <div class="b" data-reveal style="--i:7">
+          <span class="b-k">Acceso</span>
+          <h3>Ingreso de los usuarios de negocio con cuenta corporativa</h3>
+          <p>Reclutadores y administrador acceden con la cuenta de la organización, y cada rol ve las secciones que le corresponden.</p>
         </div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 18</div>
@@ -207,7 +183,7 @@
         <h2 data-reveal style="--i:1">Saneamiento de los flujos</h2>
       </div></div>
       <div class="bento bento--dense bento--fill">
-        <div class="b b--hero" data-reveal style="--i:2">
+        <div class="b" data-reveal style="--i:2">
           <span class="b-k">Current Client US Openings</span>
           <h3>Baja de vacante sin borrado de la empresa cliente</h3>
           <p>El cierre de la última vacante de un cliente eliminaba también su registro de empresa, con la investigación, los contactos y la asignación comercial asociados. Ahora se elimina únicamente la vacante.</p>
@@ -253,7 +229,7 @@
         <h2 data-reveal style="--i:1">Búsqueda preliminar de On-Demand Openings</h2>
       </div></div>
       <div class="bento bento--fill">
-        <div class="b b--hero" data-reveal style="--i:2">
+        <div class="b" data-reveal style="--i:2">
           <span class="b-k">Proveedor</span>
           <h3>Búsqueda preliminar sobre la búsqueda pública de LinkedIn</h3>
           <p>La fase de búsqueda dejó de ejecutarse sobre un actor de scraping y consulta la búsqueda pública de empleos de LinkedIn, lo que reduce el tiempo de respuesta del preview de minutos a segundos.</p>
@@ -283,8 +259,8 @@
         <span class="eyebrow" data-reveal style="--i:0">Ajustes y Mantenimiento</span>
         <h2 data-reveal style="--i:1">Ajustes a Solvo Platform</h2>
       </div></div>
-      <div class="bento bento--three">
-        <div class="b b--hero b--tall" data-reveal style="--i:2">
+      <div class="bento bento--fill">
+        <div class="b" data-reveal style="--i:2">
           <span class="b-k">Exportación cruzada</span>
           <h3>Exportación de las entidades relacionadas con el recorte</h3>
           <p>Al exportar un recorte de empresas, la operación incluye también las vacantes y los contactos asociados, sin necesidad de repetir el filtro en los otros listados.</p>
@@ -294,7 +270,7 @@
           <h3>Selección de las entidades a incluir en la exportación</h3>
           <p>El cuadro de exportación presenta una casilla por entidad con el conteo de registros, y entrega un único paquete cuando la operación genera más de un archivo.</p>
         </div>
-        <div class="b" data-reveal style="--i:4">
+        <div class="b b--6" data-reveal style="--i:4">
           <span class="b-k">Industria</span>
           <h3>Reclasificación de la industria de las empresas ya cargadas</h3>
           <p>Las empresas existentes se reclasificaron contra el catálogo estándar de industrias, de modo que el filtro por sector de los listados devuelva el universo completo.</p>
