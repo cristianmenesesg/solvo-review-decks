@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa de Componentes</title>
+<link rel="icon" href="../../assets/design-system/solvo-genai/logos/SolvoGenAI_Icon_Color.png">
+<link rel="stylesheet" href="../../engine/deck.css">
+<style>
+  /* ===================================================== MAPA DE COMPONENTES */
+  .slide--cover h1 { font-size: 7.6cqh; max-width: 24ch; }
+
+  .cslide { padding: 4.2cqh 4cqw 5.4cqh; gap: 1.5cqh; }
+  .cslide .slide-foot { left: 4cqw; bottom: 2cqh; }
+
+  .c-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2cqw; }
+  .c-head .eyebrow { font-size: 1.45cqh; }
+  .c-head h2 { font-size: 4.2cqh; margin-top: .8cqh; display: flex; align-items: center; gap: 1.2cqw; }
+  .c-head .tipo {
+    font-family: var(--font-mono); font-weight: 500; font-size: 1.4cqh; letter-spacing: .02em;
+    color: var(--ink-2); background: var(--surface-2); border: 1px solid var(--line);
+    padding: .5cqh 1cqh; border-radius: var(--radius-full);
+  }
+  .c-head > .badge { font-size: 1.55cqh; }
+
+  /* ---- bento */
+  .bento {
+    flex: 1; min-height: 0;
+    display: grid; grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr); gap: 1.3cqh 1cqw;
+  }
+  .b {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 1.6cqh;
+    padding: 1.6cqh 1.3cqw; display: flex; flex-direction: column; gap: .9cqh; min-width: 0;
+  }
+  .b h4, .sp-row h4 {
+    margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 1.2cqh;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .b p { font-size: 1.75cqh; color: var(--ink-2); line-height: 1.42; }
+
+  .b-desc  { grid-column: span 5; }
+  .b-desc p:first-of-type, .b-value p, .b-status p { max-width: 60ch; }
+  .b-value { grid-column: span 4; }
+  .b-status{ grid-column: span 3; }
+  .b-conn  { grid-column: span 5; }
+  .b-apis  { grid-column: span 3; }
+  .b-epics { grid-column: span 4; }
+
+  .b-desc p:first-of-type { color: var(--ink); font-size: 1.85cqh; }
+  .b-desc .runs { margin-top: auto; font-size: 1.5cqh; color: var(--ink-3); }
+  .b-desc .runs b { font-family: var(--font-heading); font-weight: 600; color: var(--ink-2); margin-right: .4em; }
+
+  .b-value { background: var(--grad-sign); border-color: transparent; position: relative; overflow: hidden; }
+  .b-value::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(70% 90% at 100% 0%, rgba(241,149,86,.35) 0%, rgba(241,149,86,0) 60%);
+  }
+  .b-value h4 { color: rgba(255,255,255,.7); }
+  .b-value .stat {
+    font-family: var(--font-heading); font-weight: 700; font-size: 4.2cqh; line-height: 1; letter-spacing: -.02em;
+    background: linear-gradient(100deg, #FDBA8C 0%, #fff 70%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .b-value .vhead { font-family: var(--font-heading); font-weight: 700; font-size: 2.5cqh; line-height: 1.15; color: #fff; letter-spacing: -.01em; position: relative; z-index: 1; }
+  .b-value .metric { margin-top: auto; display: flex; align-items: center; gap: 1cqw; padding-top: 1.2cqh; border-top: 1px solid rgba(255,255,255,.22); position: relative; z-index: 1; }
+  .b-value .metric .stat { font-size: 4.2cqh; flex: none; }
+  .b-value .metric .mlabel { font-size: 1.45cqh; color: rgba(255,255,255,.85); line-height: 1.35; }
+  .b-value p { color: rgba(255,255,255,.9); font-size: 1.72cqh; position: relative; z-index: 1; }
+
+  .b-status .badge { align-self: flex-start; font-size: 1.4cqh; padding: .6cqh 1.1cqh; }
+  .b-status p { font-size: 1.65cqh; }
+
+  .conn { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.2cqh; }
+  .conn li { display: grid; grid-template-columns: 34% 1fr; gap: .8cqw; align-items: baseline; font-size: 1.62cqh; line-height: 1.35; }
+  .conn b { font-family: var(--font-heading); font-weight: 600; color: var(--ink); }
+  .conn span { color: var(--ink-2); }
+
+  .apis { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1cqh; }
+  .apis li { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: .7cqw; font-size: 1.45cqh; color: var(--ink-2); line-height: 1.3; }
+  .api {
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.55cqh; color: var(--violet);
+    background: #F1EDFD; border: 1px solid rgba(119,90,229,.25);
+    padding: .55cqh 1cqh; border-radius: var(--radius-full); white-space: nowrap;
+  }
+
+  .eps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .75cqh; }
+  .eps li { display: flex; justify-content: space-between; align-items: baseline; gap: .6cqw; font-size: 1.45cqh; line-height: 1.3; }
+  .eps a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: color var(--transition-fast), border-color var(--transition-fast); }
+  .eps a:hover { color: var(--energy-d); border-color: currentColor; }
+  .eps .noado { color: var(--ink-2); }
+  .eps .id { font-family: var(--font-mono); font-size: 1.15cqh; color: var(--ink-3); white-space: nowrap; }
+
+  /* ---- sprints */
+  .sprints { display: flex; flex-direction: column; gap: 1.1cqh; }
+  .sp-row { display: flex; align-items: center; gap: 1.2cqw; }
+  .sp-chips { display: flex; flex-wrap: wrap; gap: .5cqh .4cqw; }
+  .sp {
+    font-family: var(--font-mono); font-size: 1.25cqh; font-weight: 500; color: var(--ink-3);
+    padding: .35cqh .8cqh; border-radius: var(--radius-full); border: 1px solid var(--line); background: var(--surface);
+  }
+  .sp.on { color: var(--energy-d); border-color: rgba(224,126,58,.5); background: #FEF3EC; font-weight: 600; }
+  .sp-note { margin-left: auto; font-size: 1.25cqh; color: var(--ink-3); }
+
+  .sp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1cqw; }
+  .sc {
+    position: relative; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 1.6cqh;
+    padding: 1.4cqh 1.3cqw 1.5cqh; display: flex; flex-direction: column; gap: .9cqh;
+  }
+  .sc::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad-heat); }
+  .sc.cur { border-color: rgba(119,90,229,.35); background: linear-gradient(180deg, #F7F4FF 0%, #fff 70%); }
+  .sc.cur::before { background: linear-gradient(180deg, #775AE5, #3869E0); }
+  .sc-h { display: flex; align-items: baseline; gap: .7cqw; }
+  .sc-h b { font-family: var(--font-heading); font-weight: 700; font-size: 2cqh; color: var(--ink); }
+  .sc-h span { font-family: var(--font-mono); font-size: 1.25cqh; color: var(--ink-3); }
+  .sc-h .live {
+    margin-left: auto; font-family: var(--font-heading); font-weight: 600; font-size: 1.1cqh; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--violet); background: #EFEAFF; padding: .35cqh .8cqh; border-radius: var(--radius-full);
+  }
+  .sc ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .55cqh; }
+  .sc li { display: flex; align-items: baseline; gap: .6cqw; position: relative; padding-left: 1.4cqh; font-size: 1.6cqh; color: var(--ink-2); line-height: 1.35; }
+  .sc li::before { content: ""; position: absolute; left: 0; top: .6cqh; width: .6cqh; height: .6cqh; border-radius: 50%; background: var(--energy); }
+  .sc.cur li::before { background: var(--violet); }
+  .sc.empty { background: transparent; border-style: dashed; align-items: center; justify-content: center; }
+  .sc.empty::before { display: none; }
+  .sc.empty span { font-size: 1.4cqh; color: var(--ink-3); }
+
+  /* ---- índice */
+  .ix-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 3cqw; margin-top: 2.4cqh; align-items: start; }
+  .ix-g h3 { font-size: 1.5cqh; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 1.2cqh; }
+  .ix-g:first-child { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2cqw; }
+  .ix-g:first-child h3 { grid-column: 1 / -1; }
+  .ix {
+    display: grid; grid-template-columns: 6cqh 1fr auto; align-items: center; gap: 1cqw;
+    padding: 1.4cqh 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+  }
+  .ix:hover .ix-n { color: var(--energy-d); }
+  .ix-s { font-family: var(--font-mono); font-weight: 600; font-size: 1.7cqh; color: var(--energy-d); }
+  .ix-n { font-family: var(--font-heading); font-weight: 600; font-size: 1.95cqh; color: var(--ink); transition: color var(--transition-fast); }
+  .ix-n small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 1.35cqh; color: var(--ink-3); margin-top: .3cqh; }
+  .ix .badge { font-size: 1.25cqh; padding: .5cqh 1cqh; white-space: nowrap; }
+
+  .tag {
+    margin-left: auto; flex: none;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.05cqh; letter-spacing: .1em; text-transform: uppercase;
+    padding: .2cqh .7cqh; border-radius: var(--radius-full); border: 1px solid transparent; white-space: nowrap;
+  }
+  .tag--fix { color: #1D4ED8; background: #EFF4FF; border-color: rgba(56,105,224,.3); }
+  .tag--bug { color: #B91C1C; background: #FEF2F2; border-color: rgba(220,38,38,.3); }
+
+  /* ---- versión por ambiente y alertas */
+  .envs { display: flex; flex-wrap: wrap; gap: .6cqh .4cqw; }
+  .env {
+    display: inline-flex; align-items: center; gap: .5em; white-space: nowrap;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.3cqh;
+    padding: .45cqh 1cqh; border-radius: var(--radius-full); border: 1px solid transparent;
+  }
+  .env b { font-family: var(--font-mono); font-weight: 600; font-size: .9em; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+  .env--prod { color: var(--color-success-dark); background: var(--color-success-light); border-color: rgba(22,163,74,.35); }
+  .env--qa   { color: var(--color-warning-dark); background: var(--color-warning-light); border-color: rgba(245,158,11,.4); }
+  .env--dev  { color: var(--ink-2); background: var(--color-gray-100); border-color: var(--line-2); }
+  .alert {
+    display: inline-flex; align-items: center; gap: .45em; white-space: nowrap;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.2cqh; color: #B91C1C;
+    background: #FEF2F2; border: 1px solid rgba(220,38,38,.3); padding: .45cqh 1cqh; border-radius: var(--radius-full);
+  }
+  .alert::before { content: "!"; font-family: var(--font-mono); font-weight: 700; }
+
+  .ix-table { margin-top: 2cqh; display: flex; flex-direction: column; }
+  .ix-hd, .slide--index .ix { display: grid; grid-template-columns: 4cqw 1.25fr 1fr 1fr .8fr; align-items: center; gap: 1.2cqw; }
+  .ix-hd { padding-bottom: 1cqh; border-bottom: 1px solid var(--line-2); }
+  .ix-hd span { font-family: var(--font-heading); font-weight: 600; font-size: 1.15cqh; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+  .ix-prod { font-family: var(--font-heading); font-weight: 700; font-size: 1.4cqh; letter-spacing: .14em; text-transform: uppercase; color: var(--energy-d); padding: 1.4cqh 0 .4cqh; }
+  .slide--index .ix { padding: .75cqh 0; }
+  .slide--index .ix-n { font-size: 1.7cqh; }
+  .slide--index .ix-n small { display: inline; margin: 0 0 0 .7em; font-size: 1.2cqh; }
+  .ix-c { display: flex; flex-wrap: wrap; gap: .4cqh .3cqw; }
+  .ix-none { font-size: 1.3cqh; color: var(--ink-3); }
+
+  .env--plan { color: var(--violet); background: #F1EDFD; border-color: rgba(119,90,229,.3); }
+  .sc.next { border-style: dashed; border-color: rgba(119,90,229,.45); background: transparent; }
+  .sc.next::before { background: linear-gradient(180deg, #C7B3FF, #789FFF); }
+  .sc.next li::before { background: var(--lav); }
+  .sp-none { font-size: 1.3cqh; color: var(--ink-3); }
+
+  .slide--end .end-logo { height: 11cqh; margin-bottom: 3.6cqh; }
+  .slide--end .end-title { font-family: var(--font-heading); font-weight: 600; font-size: 2.6cqh; letter-spacing: .24em; text-transform: uppercase; margin-top: 0; }
+
+  /* ---- descarga del PowerPoint (portada y cierre) */
+  .dl-pptx {
+    display: inline-flex; align-items: center; gap: .7em; align-self: flex-start; margin-top: 4cqh;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.8cqh; color: #fff !important; text-decoration: none;
+    padding: 1.1cqh 2cqh; border-radius: var(--radius-full);
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(4px);
+    position: relative; z-index: 2; transition: background var(--transition-fast), border-color var(--transition-fast);
+  }
+  .dl-pptx:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); }
+  .dl-pptx svg { width: 2cqh; height: 2cqh; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .slide--end .dl-pptx { align-self: center; margin-top: 3.4cqh; }
+
+</style>
+</head>
+<body>
+<div id="deck">
+  <div class="stage">
+
+    <section class="slide slide--cover">
+      <div class="cover-brand"><img src="data:image/webp;base64,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" alt="Solvo GenAI"></div>
+      <span class="eyebrow cover-kicker" data-reveal style="--i:0">Mapa de componentes</span>
+      <h1 data-reveal style="--i:1">Componentes, integraciones<br><span class="hl">y estado actual</span></h1>
+      <div class="cover-meta" data-reveal style="--i:2"><span>Estado al sprint 21 · octubre de 2026</span><span class="sep"></span><span>Softgic · Product Owner</span></div>
+      <div class="cover-projects" data-reveal style="--i:3">
+        <span class="cp"><b>10</b> · Solvo Sales Platform</span>
+        <span class="cp"><b>2</b> · Solvo Recruiter Platform</span>
+      </div>
+      <a class="dl-pptx" href="mapa-componentes.pptx" download data-reveal style="--i:4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>Descargar PowerPoint</a>
+    </section>
+    <section class="slide cslide slide--index">
+      <header class="c-head" data-reveal style="--i:0"><div><span class="eyebrow">Índice</span><h2>Componentes por producto</h2></div></header>
+      <div class="ix-table" data-reveal style="--i:1">
+        <div class="ix-hd"><span></span><span>Componente</span><span>Producción</span><span>QA / desarrollo / plan</span><span>Alertas</span></div>
+        <div class="ix-prod">Solvo Sales Platform</div><a class="ix" href="#guo" data-goto="guo"><span class="ix-s">01</span><span class="ix-n">General US Openings<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#cdm" data-goto="cdm"><span class="ix-s">02</span><span class="ix-n">Company Decision Maker<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#eco" data-goto="eco"><span class="ix-s">03</span><span class="ix-n">Email Cold Outreach<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="alert">Sin conversión medible</span></span></a><a class="ix" href="#lda" data-goto="lda"><span class="ix-s">04</span><span class="ix-n">Landing de Agendamiento<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod"><b>Prod</b>MVP</span></span><span class="ix-c"><span class="env env--qa"><b>QA</b>Release 2</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#odo" data-goto="odo"><span class="ix-s">05</span><span class="ix-n">On-Demand Openings<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="alert">Sin uso</span></span></a><a class="ix" href="#fun" data-goto="fun"><span class="ix-s">06</span><span class="ix-n">Reporte de Funnel<small>Reporte y Métricas</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#res" data-goto="res"><span class="ix-s">07</span><span class="ix-n">Reporte de Métricas de Sistema<small>Reporte y Métricas</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#cco" data-goto="cco"><span class="ix-s">08</span><span class="ix-n">Current Client US Openings<small>Prospect Engine</small></span><span class="ix-c"><span class="env env--prod">En producción</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="alert">Bugs detectados</span></span></a><a class="ix" href="#spl" data-goto="spl"><span class="ix-s">09</span><span class="ix-n">Solvo Platform<small>App Web</small></span><span class="ix-c"><span class="env env--prod"><b>Prod</b>Release 2</span></span><span class="ix-c"><span class="env env--qa"><b>QA</b>Release 3</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><a class="ix" href="#pes" data-goto="pes"><span class="ix-s">10</span><span class="ix-n">Prospect Engine España<small>Prospect Engine</small></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="env env--plan"><b>Plan</b>MVP · sprint 22</span></span><span class="ix-c"><span class="ix-none">—</span></span></a><div class="ix-prod">Solvo Recruiter Platform</div><a class="ix" href="#tps" data-goto="tps"><span class="ix-s">11</span><span class="ix-n">Talent Pool Scraping<small>Pipeline n8n</small></span><span class="ix-c"><span class="env env--prod"><b>Prod</b>Release 2</span></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="alert">Desactivación acordada</span></span></a><a class="ix" href="#srp" data-goto="srp"><span class="ix-s">12</span><span class="ix-n">Solvo Recruiter Platform<small>App web interna</small></span><span class="ix-c"><span class="ix-none">—</span></span><span class="ix-c"><span class="env env--qa"><b>QA</b>Release 2</span></span><span class="ix-c"><span class="ix-none">—</span></span></a>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes</div>
+    </section>
+    <section class="slide slide--section">
+      <span class="sec-index">01</span>
+      <span class="sec-rule" data-reveal style="--i:0"></span>
+      <h2 class="sec-title" data-reveal style="--i:1">Solvo Sales Platform</h2>
+      <p class="sec-scope" data-reveal style="--i:2">Detección de señales de contratación, identificación de decisores, contacto en frío, aplicación comercial y reportes de seguimiento.</p>
+    </section>
+    <section class="slide cslide" id="guo">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>General US Openings<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Identifica vacantes del mercado estadounidense en las posiciones del ICP, evalúa su viabilidad para talento remoto y califica a la empresa que las publica.</p><p class="runs"><b>Corre en</b> n8n · VM dedicada</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Señales diarias de vacantes que Solvo puede cubrir</div><p>El equipo comercial dispone cada día, de forma automatizada, de las vacantes abiertas en el mercado estadounidense que Solvo puede cubrir con talento remoto y de las empresas que las publican, sin monitorear portales de empleo.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span></div><p>La versión por posición del ICP opera en producción desde el 30 de septiembre (sprint 19). Ajustes de normalización en curso.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Company Decision Maker</b><span>recibe las empresas calificadas para identificar a sus decisores</span></li><li><b>Email Cold Outreach</b><span>utiliza sus vacantes viables en el contenido del correo</span></li><li><b>Solvo Platform</b><span>presenta sus empresas y vacantes al equipo comercial</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Oxylabs</span><span>búsqueda y detalle de vacantes</span></li><li><span class="api">OpenAI</span><span>viabilidad y normalización de la vacante</span></li><li><span class="api">Apollo</span><span>perfil de la empresa: industria, tamaño e ingresos</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/77215" target="_blank" rel="noopener">General US Openings — MVP (barrido del mercado con clasificación remota por IA)</a><span class="id">#77215</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/82712" target="_blank" rel="noopener">General US Openings — CR Migración de Infraestructura (paso a Azure)</a><span class="id">#82712</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95102" target="_blank" rel="noopener">Ajustes Prospect Engine (barrido por posición del ICP y calificación al detectar)</a><span class="id">#95102</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S2</span><span class="sp">S4</span><span class="sp">S5</span><span class="sp">S6</span><span class="sp">S11</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Barrido diario de Indeed por posición del ICP y ciudad</li><li>Clasificación de la vacante por viabilidad remota y posición del catálogo</li><li>Calificación de la empresa por su ajuste al ICP</li><li>Bucle infinito en el scraping del detalle<span class="tag tag--bug">Bug</span></li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Perfil y datos de contacto de la empresa, listos para importar en Apollo</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Nombre de la empresa según su forma oficial<span class="tag tag--fix">Fix de calidad</span></li><li>Normalización con la publicación completa del portal<span class="tag tag--fix">Fix de calidad</span></li><li>Error en el proceso de carga de datos<span class="tag tag--bug">Bug</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 01/12</div>
+    </section>
+    <section class="slide cslide" id="cdm">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>Company Decision Maker<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Identifica a los decisores de contratación de cada empresa calificada y obtiene sus datos de contacto verificados.</p><p class="runs"><b>Corre en</b> n8n · VM dedicada</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Contacto directo con los decisores de contratación</div><p>Los SDRs reciben cada empresa calificada con sus decisores identificados y datos de contacto verificados, con el consumo de créditos de Apollo concentrado en ellos.</p><div class="metric"><span class="stat">8%</span><span class="mlabel">de contactabilidad de los prospectos entregados a los SDRs, según feedback parcial, frente al 3–4% de la versión anterior</span></div></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span></div><p>El descubrimiento de decisores rediseñado opera en producción desde el sprint 19. La investigación manual a pedido se encuentra en desarrollo.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>General US Openings</b><span>provee las empresas calificadas</span></li><li><b>Email Cold Outreach</b><span>recibe los decisores y la investigación de la empresa</span></li><li><b>Solvo Platform</b><span>solicita la investigación de una empresa por webhook</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Apollo</span><span>decisores y revelación del contacto</span></li><li><span class="api">Bright Data</span><span>respaldo con LinkedIn y web corporativa</span></li><li><span class="api">Hunter</span><span>verificación de correos</span></li><li><span class="api">OpenAI</span><span>análisis del perfil</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/75746" target="_blank" rel="noopener">Company &amp; Decision-Makers — MVP (investigación multi-agente y sales brief)</a><span class="id">#75746</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/84882" target="_blank" rel="noopener">Company &amp; Decision-Makers — Release 2 (enriquecimiento, sales pitch y decisores verificados)</a><span class="id">#84882</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95102" target="_blank" rel="noopener">Ajustes Prospect Engine (decisores calificados antes de revelar e investigación manual)</a><span class="id">#95102</span></li><li><span class="noado">Normalización de Datos de Prospección — CR (empresas investigadas a tablas compartidas)</span><span class="id">sin Epic</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S2</span><span class="sp">S7</span><span class="sp">S11</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Búsqueda de decisores de las empresas calificadas</li><li>Análisis del perfil para revelar solo a quien decide la contratación</li><li>Email y teléfono verificados de cada decisor</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Investigación y calificación a pedido de una empresa cargada manualmente</li><li>Datos completos del contacto revelado<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Decisores de la empresa investigada a pedido</li><li>Retorno del resultado de la investigación a Solvo Platform</li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 02/12</div>
+    </section>
+    <section class="slide cslide" id="eco">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>Email Cold Outreach<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Envía correos en frío personalizados a los decisores de las empresas calificadas, a partir de sus vacantes publicadas, con una invitación a agendar una reunión.</p><p class="runs"><b>Corre en</b> n8n · VM dedicada (aloja también los flujos de la landing y de los reportes)</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Automatización del primer contacto comercial</div><p>Sustituye la elaboración manual de listas y correos por un envío diario y personalizado a los decisores, orientado a convertir el interés del prospecto en una reunión agendada.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span><span class="alert">Sin conversión medible</span></div><p>Los antispam generan clics no humanos y parte de los correos quedaría en cuarentena. Pendiente: cambio de remitente para mejorar la entregabilidad, condición para evaluar el copy, el A/B de plantillas y la hora de envío.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>General US Openings</b><span>provee las vacantes viables de cada empresa</span></li><li><b>Company Decision Maker</b><span>provee los decisores y la investigación</span></li><li><b>Landing de Agendamiento</b><span>destino del enlace incluido en cada correo</span></li><li><b>Reporte de Funnel</b><span>mide entregas, aperturas y clics</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">OpenAI</span><span>copy del correo</span></li><li><span class="api">Brevo</span><span>envío y eventos de engagement</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/77515" target="_blank" rel="noopener">Email Cold Calling — MVP (cold email diario con copy por IA)</a><span class="id">#77515</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/85100" target="_blank" rel="noopener">Email Cold Calling — Ajustes Críticos CR (ciclo diario y template HTML)</a><span class="id">#85100</span></li><li><span class="noado">Email Cold Calling — Coherencia de Copy CR (propuesta de valor fija en el template)</span><span class="id">sin Epic</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95102" target="_blank" rel="noopener">Ajustes Prospect Engine (envío a decisores con dos plantillas alternadas)</a><span class="id">#95102</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/96065" target="_blank" rel="noopener">Optimización de Cold Outreach (recordatorio a quien no abrió o no agendó)</a><span class="id">#96065</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S3</span><span class="sp">S7</span><span class="sp">S9</span><span class="sp">S11</span><span class="sp">S12</span><span class="sp">S16</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Envío diario a los decisores de las empresas mejor calificadas</li><li>Correo personalizado con la vacante más relevante y el contexto de la empresa</li><li>Dos plantillas alternadas por empresa para comparar su desempeño</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Dos correos de recordatorio tras el primer contacto: a quien no abrió y a quien visitó la landing sin agendar</li><li>Medición de los recordatorios en el reporte semanal</li><li>Copy ajustado a un mensaje único<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Envío diario automático de los recordatorios</li><li>Ajuste del copy de los recordatorios<span class="tag tag--fix">Fix de calidad</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 03/12</div>
+    </section>
+    <section class="slide cslide" id="lda">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>Landing de Agendamiento<span class="tipo">App web pública</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Página pública de destino del correo en frío, en la que el prospecto consulta la disponibilidad del equipo de Solvo y agenda una reunión. Release 2 incorpora un showcase de perfiles de talento afines a sus vacantes.</p><p class="runs"><b>Corre en</b> Container App + Static Web App · Front Door + WAF</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Conversión del interés en reuniones agendadas</div><p>El prospecto agenda directamente con Solvo desde el correo, sin intercambios previos. El showcase le presenta el tipo de talento disponible antes de la reunión.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod"><b>Prod</b>MVP</span><span class="env env--qa"><b>QA</b>Release 2</span></div><p>MVP en producción desde el 18 de agosto. Release 2 (showcase) en QA, con ajustes solicitados por marketing.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Email Cold Outreach</b><span>origen de las visitas; envía el correo de confirmación de la reserva</span></li><li><b>Reporte de Funnel</b><span>registra la visita y la reserva</span></li><li><b>Talent Pool Scraping</b><span>provee los currículos del showcase</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Microsoft Graph</span><span>disponibilidad y reserva en el calendario</span></li><li><span class="api">Brevo</span><span>confirmación post-reserva</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/88916" target="_blank" rel="noopener">Landing de Agendamiento — PoC (primera landing de reserva)</a><span class="id">#88916</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/90079" target="_blank" rel="noopener">Landing de Agendamiento — MVP (reserva en producción con confirmación por correo)</a><span class="id">#90079</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/92486" target="_blank" rel="noopener">Landing de Agendamiento — Release 2 (showcase de talento)</a><span class="id">#92486</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S10</span><span class="sp">S11</span><span class="sp">S13</span><span class="sp">S14</span><span class="sp">S15</span><span class="sp">S16</span><span class="sp on">S17</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 17</b><span>17–28 ago</span></div><ul><li>Medición de la interacción del prospecto con el showcase</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Medición del showcase integrada al registro y al reporte del funnel</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Showcase con el currículo afín a la vacante del prospecto, desde el correo hasta la landing</li><li>Reporte semanal con la versión de Release 2</li><li>Registro de la visita solo cuando el prospecto interactúa<span class="tag tag--fix">Fix de calidad</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 04/12</div>
+    </section>
+    <section class="slide cslide" id="odo">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>On-Demand Openings<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Obtiene a demanda las vacantes vigentes de una empresa específica, solicitadas desde Solvo Platform, con revisión del usuario antes de registrarlas.</p><p class="runs"><b>Corre en</b> n8n · VM de Current Client US Openings</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Atención inmediata de oportunidades puntuales</div><p>Permite al equipo comercial obtener las vacantes vigentes de una cuenta en el momento en que se requieren, sin depender de la programación de los barridos.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span><span class="alert">Sin uso</span></div><p>En producción desde el sprint 17. Sin uso registrado a la fecha; su costo depende del volumen de búsquedas.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Solvo Platform</b><span>solicita la búsqueda por webhook y recibe el resultado por callback</span></li><li><b>Reporte de Métricas de Sistema</b><span>registra sus vacantes como un origen independiente</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Oxylabs</span><span>preview de LinkedIn e Indeed</span></li><li><span class="api">Apify</span><span>detalle de las vacantes de LinkedIn</span></li><li><span class="api">OpenAI</span><span>modalidad de trabajo</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/90924" target="_blank" rel="noopener">On-Demand Openings — MVP (vacantes de una empresa a pedido)</a><span class="id">#90924</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/93094" target="_blank" rel="noopener">Solvo Sales Platform — Mantenimiento y Ajustes (preview de LinkedIn más rápido)</a><span class="id">#93094</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S14</span><span class="sp on">S15</span><span class="sp on">S18</span><span class="sp on">S19</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 15</b><span>21–31 jul</span></div><ul><li>Solicitud de búsqueda on-demand desde Solvo Platform</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 18</b><span>31 ago–11 sep</span></div><ul><li>Preview de vacantes de LinkedIn más rápido y solo con vacantes vigentes<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Aviso al usuario cuando la búsqueda falla, con opción de reintento<span class="tag tag--fix">Fix de calidad</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 05/12</div>
+    </section>
+    <section class="slide cslide" id="fun">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Reporte y Métricas</span>
+          <h2>Reporte de Funnel<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Mide la conversión del correo en frío por etapa, desde la entrega del correo hasta la reunión agendada, y emite un reporte semanal.</p><p class="runs"><b>Corre en</b> n8n · VM de Email Cold Outreach</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Decisiones de optimización basadas en datos</div><p>Identifica la etapa en la que se pierde la conversión del correo en frío, considerando únicamente interacciones humanas, para orientar los ajustes del canal.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span></div><p>En producción desde el 18 de agosto. La depuración del tracking está aprobada en QA; el reporte se envía en un correo independiente.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Email Cold Outreach</b><span>recibe de Brevo los eventos de sus correos</span></li><li><b>Landing de Agendamiento</b><span>recibe la visita y la reserva</span></li><li><b>Reporte de Métricas de Sistema</b><span>comparte la ejecución semanal</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Brevo</span><span>webhook de eventos y envío del reporte</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/90079" target="_blank" rel="noopener">Landing de Agendamiento — MVP (tracking del embudo y reporte semanal)</a><span class="id">#90079</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/93094" target="_blank" rel="noopener">Solvo Sales Platform — Mantenimiento y Ajustes (métricas solo de interacción humana)</a><span class="id">#93094</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S15</span><span class="sp on">S18</span><span class="sp on">S19</span><span class="sp on">S20</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 18</b><span>31 ago–11 sep</span></div><ul><li>Atribución de cada evento de correo al prospecto<span class="tag tag--fix">Fix de calidad</span></li><li>Embudo limitado a los eventos del correo en frío<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Métricas calculadas solo sobre interacción humana, con el tráfico antispam separado<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Reporte semanal con las métricas y los adjuntos de cada semana<span class="tag tag--fix">Fix de calidad</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 06/12</div>
+    </section>
+    <section class="slide cslide" id="res">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Reporte y Métricas</span>
+          <h2>Reporte de Métricas de Sistema<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Reporte semanal de la operación del ecosistema: volumen producido por cada pipeline, estado de sus ejecuciones y consumo por proveedor externo.</p><p class="runs"><b>Corre en</b> n8n · VM de Email Cold Outreach</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Visibilidad semanal de la operación y su costo</div><p>Informa al negocio y al equipo técnico la producción de cada pipeline, las fallas de ejecución y el gasto por proveedor, sin consultas manuales a la base de datos.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span></div><p>En producción con envío semanal. Ajustes de los adjuntos en curso.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Pipelines del Prospect Engine</b><span>consume su producción y su registro de consumo</span></li><li><b>Reporte de Funnel</b><span>ejecuta su cálculo semanal</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Brevo</span><span>envío del reporte</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/92485" target="_blank" rel="noopener">Reporte de Estatus del Sistema — MVP (reporte semanal de producción y consumo)</a><span class="id">#92485</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95102" target="_blank" rel="noopener">Ajustes Prospect Engine (adjuntos de vacantes y contactos alineados)</a><span class="id">#95102</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp on">S16</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 16</b><span>4–14 ago</span></div><ul><li>Registro del consumo de APIs en los cinco pipelines</li><li>Reporte semanal de producción, salud de los pipelines y consumo por proveedor</li><li>Vacantes y contactos de la semana como adjuntos</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Contactos de la semana listos para importar en Apollo</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Adjuntos de vacantes y contactos alineados entre sí<span class="tag tag--fix">Fix de calidad</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 07/12</div>
+    </section>
+    <section class="slide cslide" id="cco">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>Current Client US Openings<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Detecta las vacantes publicadas en Indeed y LinkedIn por las empresas cliente de Solvo y notifica a cada comercial las posiciones abiertas de sus cuentas.</p><p class="runs"><b>Corre en</b> n8n · VM dedicada (compartida con On-Demand Openings)</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Automatización de señales comerciales sobre la cartera de clientes</div><p>Los BCs reciben las posiciones abiertas de sus clientes que Solvo podría cubrir, sin consultar cada cuenta de forma manual. Cobertura inicial: más de 158 clientes de 2 BCs.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod">En producción</span><span class="alert">Bugs detectados</span></div><p>En producción sobre la cartera inicial de más de 158 clientes de 2 BCs. Se identificaron bugs en la operación productiva.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Solvo Platform</b><span>provee los clientes y su comercial asignado; recibe las vacantes detectadas</span></li><li><b>Reporte de Métricas de Sistema</b><span>consume sus vacantes y su registro de consumo</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Oxylabs</span><span>perfil de la empresa y vacantes de Indeed</span></li><li><span class="api">Apify</span><span>vacantes de LinkedIn</span></li><li><span class="api">Bright Data</span><span>detalle de las vacantes de LinkedIn</span></li><li><span class="api">Brevo</span><span>correo al comercial</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/75022" target="_blank" rel="noopener">Current Client US Openings — MVP (vacantes de clientes y aviso al comercial)</a><span class="id">#75022</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/82718" target="_blank" rel="noopener">Current Client US Openings — CR Migración de Infraestructura (paso a Azure)</a><span class="id">#82718</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/88520" target="_blank" rel="noopener">Current Client US Openings — Despliegue a Producción (revisión del flujo y carga de clientes)</a><span class="id">#88520</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95102" target="_blank" rel="noopener">Ajustes Prospect Engine (puesta en operación sobre la cartera real)</a><span class="id">#95102</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S1</span><span class="sp">S4</span><span class="sp">S11</span><span class="sp">S13</span><span class="sp on">S14</span><span class="sp on">S15</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 14</b><span>6–17 jul</span></div><ul><li>Conexión a la base de datos productiva en los tres ambientes</li><li>Documentación de handoff actualizada</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 15</b><span>21–31 jul</span></div><ul><li>Cartera de clientes cargada con su vendedor asignado</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Certificación del flujo de punta a punta sobre una muestra de la cartera real</li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 08/12</div>
+    </section>
+    <section class="slide cslide" id="spl">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · App Web</span>
+          <h2>Solvo Platform<span class="tipo">App web interna</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Aplicación web del equipo comercial para la gestión de empresas, vacantes y contactos, la asignación de cartera y el seguimiento del pipeline comercial.</p><p class="runs"><b>Corre en</b> Angular (Static Web App) · NestJS (Container App) · SSO Entra ID, 5 roles</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Gestión centralizada del pipeline comercial</div><p>Concentra en una sola herramienta la información que producen los pipelines y permite a cada usuario trabajar su cartera según su rol, sin extracciones manuales de la base de datos.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod"><b>Prod</b>Release 2</span><span class="env env--qa"><b>QA</b>Release 3</span></div><p>MVP, roles y mantenimiento en producción. Release 3 en desarrollo; el módulo Open Positions se encuentra completo en QA.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Pipelines del Prospect Engine</b><span>consume la información que registran en la base compartida</span></li><li><b>Company Decision Maker</b><span>solicita la investigación de una empresa</span></li><li><b>On-Demand Openings</b><span>solicita la búsqueda de vacantes y recibe el resultado</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Microsoft Entra ID</span><span>SSO y roles</span></li><li><span class="api">Vía n8n</span><span>investigación y búsqueda on-demand: no llama a terceros directo</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/80025" target="_blank" rel="noopener">Solvo Platform — MVP (SSO, empresas, vacantes y pipeline comercial)</a><span class="id">#80025</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/85208" target="_blank" rel="noopener">Solvo Platform — Mejoras MVP CR (filtros de relevancia y cierre por inactividad)</a><span class="id">#85208</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/87103" target="_blank" rel="noopener">Solvo Platform — Release 2 (roles y control de acceso)</a><span class="id">#87103</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/88845" target="_blank" rel="noopener">Solvo Platform — Ajustes UI CR (Sales Rep y ajustes de listados)</a><span class="id">#88845</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/89557" target="_blank" rel="noopener">Mitigación Pentest SolvoPlatform (hardening de seguridad)</a><span class="id">#89557</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/93094" target="_blank" rel="noopener">Solvo Sales Platform — Mantenimiento y Ajustes (filtros, industria y exportación)</a><span class="id">#93094</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/95132" target="_blank" rel="noopener">Solvo Sales Platform — Release 3 (rediseño sobre el motor de prospección)</a><span class="id">#95132</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S4</span><span class="sp">S5</span><span class="sp">S9</span><span class="sp">S10</span><span class="sp">S11</span><span class="sp">S12</span><span class="sp">S17</span><span class="sp">S18</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Filtros por contactos, industria y tamaño en los listados de vacantes y empresas</li><li>Sistema de diseño base para Release 3</li><li>Promoción controlada de QA a producción</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Listado de posiciones abiertas con filtros y exportación</li><li>Gestión de la posición: edición, estado comercial, asignación y borrado</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Detalle de la posición</li><li>Configuración de la ventana de búsqueda on-demand</li><li>Administración del showcase de la landing</li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 09/12</div>
+    </section>
+    <section class="slide cslide" id="pes">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Sales Platform · Prospect Engine</span>
+          <h2>Prospect Engine España<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Extiende el motor de prospección al mercado español: detección de vacantes en portales de empleo de España y calificación de vacantes y empresas con los criterios aplicados en Estados Unidos.</p><p class="runs"><b>Corre en</b> Se define en la POC</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Expansión a un nuevo mercado sobre la operación existente</div><p>Incorpora España como fuente de señales de contratación reutilizando la calificación, el descubrimiento de decisores y el contacto en frío ya operativos para Estados Unidos.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--plan"><b>Plan</b>MVP · sprint 22</span></div><p>En planificación. Se retiró del alcance del sprint 21; el MVP se proyecta para el sprint 22.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Company Decision Maker · Email Cold Outreach</b><span>procesan sus empresas con el mismo flujo de Estados Unidos</span></li><li><b>Solvo Platform</b><span>presenta sus empresas y vacantes al equipo comercial</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Por definir</span><span>se eligen en la POC de factibilidad</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/97124" target="_blank" rel="noopener">Prospect Engine España — MVP (factibilidad del scraping en España)</a><span class="id">#97124</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp-none">Aún sin sprints trabajados</span></div></div>
+        <div class="sp-cards"><div class="sc next" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 22</b><span>26 oct–6 nov</span><span class="live">Proyectado</span></div><ul><li>Prueba del motor de prospección sobre portales de empleo españoles</li><li>Definición de ciudades y términos de búsqueda de España</li></ul></div><div class="sc empty" data-reveal style="--i:4"><span>Sin sprints trabajados</span></div><div class="sc empty" data-reveal style="--i:4"><span>Sin sprints trabajados</span></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 10/12</div>
+    </section>
+    <section class="slide slide--section">
+      <span class="sec-index">02</span>
+      <span class="sec-rule" data-reveal style="--i:0"></span>
+      <h2 class="sec-title" data-reveal style="--i:1">Solvo Recruiter Platform</h2>
+      <p class="sec-scope" data-reveal style="--i:2">Construcción del pool de candidatos open-to-work y aplicación de búsqueda y contacto para el equipo de reclutamiento.</p>
+    </section>
+    <section class="slide cslide" id="tps">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Recruiter Platform</span>
+          <h2>Talent Pool Scraping<span class="tipo">Pipeline n8n</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Identifica en LinkedIn candidatos con disponibilidad laboral (open-to-work) según los perfiles de búsqueda configurados y mantiene actualizado el pool de talento.</p><p class="runs"><b>Corre en</b> n8n · VM dedicada</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Disponibilidad permanente de talento actualizado</div><p>Mantiene un pool de candidatos en búsqueda activa de empleo, actualizado de forma automática, que elimina la búsqueda manual en LinkedIn.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--prod"><b>Prod</b>Release 2</span><span class="alert">Desactivación acordada</span></div><p>Release 2 en producción. Según lo acordado recientemente con stakeholders y usuarios, este flujo se desactivará para priorizar la búsqueda asistida con IA (AI Search) desde Solvo Recruiter Platform.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Solvo Recruiter Platform</b><span>provee la configuración; consulta el pool de candidatos</span></li><li><b>Email Cold Outreach · Landing</b><span>utilizan sus perfiles de búsqueda en el showcase</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Apify</span><span>búsqueda de perfiles y captura de correo</span></li><li><span class="api">Bright Data</span><span>detalle del perfil</span></li><li><span class="api">OpenAI</span><span>análisis del perfil y disponibilidad</span></li><li><span class="api">Apollo</span><span>datos de contacto</span></li><li><span class="api">Brevo</span><span>reporte de la ejecución</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/88723" target="_blank" rel="noopener">Talent Pool Scraping — PoC (factibilidad open-to-work en LinkedIn)</a><span class="id">#88723</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/89475" target="_blank" rel="noopener">Talent Pool Scraping — MVP (ejecución semanal con CSV por correo)</a><span class="id">#89475</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/90042" target="_blank" rel="noopener">Talent Pool Scraping — Release 2 (pool de candidatos en producción)</a><span class="id">#90042</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S10</span><span class="sp">S11</span><span class="sp">S12</span><span class="sp">S13</span><span class="sp">S14</span><span class="sp">S16</span><span class="sp">S17</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Flujo único de búsqueda para la ejecución programada y para AI Search</li><li>Ejecución programada según la frecuencia y la cobertura configuradas</li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Re-validación de la disponibilidad de los candidatos en cada ejecución</li><li>Captura ampliada del perfil del candidato<span class="tag tag--fix">Fix de calidad</span></li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Perfil de búsqueda asignado a cada candidato nuevo<span class="tag tag--fix">Fix de calidad</span></li><li>Reporte de cada ejecución solo con los candidatos nuevos</li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 11/12</div>
+    </section>
+    <section class="slide cslide" id="srp">
+      <header class="c-head" data-reveal style="--i:0">
+        <div>
+          <span class="eyebrow">Solvo Recruiter Platform</span>
+          <h2>Solvo Recruiter Platform<span class="tipo">App web interna</span></h2>
+        </div>
+      </header>
+      <div class="bento">
+        <div class="b b-desc" data-reveal style="--i:1"><h4>Qué hace</h4><p>Aplicación web del equipo de reclutamiento para configurar las búsquedas del pipeline, consultar y contactar candidatos y gestionar su seguimiento.</p><p class="runs"><b>Corre en</b> Container App + Static Web App · SSO Entra ID</p></div>
+        <div class="b b-value" data-reveal style="--i:1"><h4>Valor para el negocio</h4><div class="vhead">Autonomía operativa del equipo de reclutamiento</div><p>Permite buscar, filtrar y contactar candidatos sin intervención del equipo técnico. AI Search ejecuta búsquedas de perfiles nuevos con estimación de costo previa.</p></div>
+        <div class="b b-status" data-reveal style="--i:1"><h4>Estatus actual</h4><div class="envs"><span class="env env--qa"><b>QA</b>Release 2</span></div><p>MVP y Release 2 en QA, con salida a producción proyectada para el sprint 21.</p></div>
+        <div class="b b-conn" data-reveal style="--i:2"><h4>Conexiones</h4><ul class="conn"><li><b>Talent Pool Scraping</b><span>define su configuración, consulta el pool y ejecuta AI Search</span></li></ul></div>
+        <div class="b b-apis" data-reveal style="--i:2"><h4>APIs externas</h4><ul class="apis"><li><span class="api">Microsoft Entra ID</span><span>SSO y roles</span></li><li><span class="api">Brevo</span><span>outreach a candidatos</span></li><li><span class="api">OpenAI</span><span>construcción de la búsqueda en AI Search</span></li></ul></div>
+        <div class="b b-epics" data-reveal style="--i:2"><h4>Épicas</h4><ul class="eps"><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/91207" target="_blank" rel="noopener">Solvo Recruiter Platform — MVP (búsqueda, configuración y outreach)</a><span class="id">#91207</span></li><li><a href="https://devops.softgic.co/DevOps_SE/OP.Solvo.CelulaIA2/_workitems/edit/93872" target="_blank" rel="noopener">Solvo Recruiter Platform — Release 2 (AI Search, gestión del candidato y exportación con trazabilidad)</a><span class="id">#93872</span></li></ul></div>
+      </div>
+      <div class="sprints">
+        <div class="sp-row" data-reveal style="--i:3"><h4>Sprints trabajados</h4><div class="sp-chips"><span class="sp">S13</span><span class="sp">S14</span><span class="sp">S15</span><span class="sp">S16</span><span class="sp">S17</span><span class="sp">S18</span><span class="sp on">S19</span><span class="sp on">S20</span><span class="sp on">S21</span></div></div>
+        <div class="sp-cards"><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 19</b><span>14–25 sep</span></div><ul><li>Configuración e infraestructura de producción validadas</li><li>Búsqueda resuelta sobre la tabla anterior de perfiles<span class="tag tag--bug">Bug</span></li><li>Defectos de UI y datos en la búsqueda de candidatos<span class="tag tag--bug">Bug</span></li></ul></div><div class="sc" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 20</b><span>28 sep–9 oct</span></div><ul><li>Administración de perfiles de búsqueda y parámetros</li><li>Búsqueda de candidatos con AI Search y panel de detalle</li></ul></div><div class="sc cur" data-reveal style="--i:4"><div class="sc-h"><b>Sprint 21</b><span>13–24 oct</span><span class="live">En curso</span></div><ul><li>Exportación de candidatos con el formato del reporte de la ejecución</li><li>Configuración limitada a la frecuencia de búsqueda</li><li>Error 502 al buscar desde AI Search<span class="tag tag--bug">Bug</span></li></ul></div></div>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Mapa de componentes · 12/12</div>
+    </section>
+    <section class="slide slide--end">
+      <div class="cover-brand end-logo" data-reveal style="--i:0"><img src="data:image/webp;base64,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" alt="Solvo GenAI"></div>
+      <p class="end-sub end-title" data-reveal style="--i:1">Mapa de componentes</p>
+      <a class="dl-pptx" href="mapa-componentes.pptx" download data-reveal style="--i:2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>Descargar PowerPoint</a>
+    </section>
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <button class="ctrl" data-action="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>17</span></span>
+    <button class="ctrl" data-action="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    <button class="ctrl" data-action="fullscreen" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+  </div>
+  <div class="progress"><div class="bar"></div></div>
+</div>
+<script src="../../engine/deck.js"></script>
+<script>
+/* Índice: cada fila salta a la slide de su componente */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  document.querySelectorAll('[data-goto]').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var i = slides.indexOf(document.getElementById(a.dataset.goto));
+      if (i >= 0) { location.hash = '#' + (i + 1); location.reload(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
