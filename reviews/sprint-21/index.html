@@ -264,16 +264,16 @@
             <span class="fc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16.5h5"/></svg></span>
             <span class="fc-n">03</span>
           </div>
-          <h3>Estado de los componentes</h3>
-          <p>Estado y valor de cada componente de Ventas y Reclutamiento.</p>
+          <h3>Estabilización y estado de los componentes</h3>
+          <p>Estabilización de los despliegues, y estado y valor de cada componente de Ventas y Reclutamiento.</p>
         </article>
         <article class="fc" data-frag>
           <div class="fc-top">
             <span class="fc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
             <span class="fc-n">04</span>
           </div>
-          <h3>Próximas entregas</h3>
-          <p>Reclutamiento y Ventas.</p>
+          <h3>Qué sigue</h3>
+          <p>Próximas entregas de Ventas.</p>
         </article>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 21</div>
@@ -487,6 +487,45 @@
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 21</div>
     </section>
 
+    <!-- ===================================================== ESTABILIZACIÓN -->
+    <section class="slide slide--content slide--func">
+      <div class="slide-head"><div class="titles">
+        <span class="eyebrow" data-reveal style="--i:0">Ventas y Reclutamiento · Infraestructura</span>
+        <h2 data-reveal style="--i:1">Estabilización de los despliegues</h2>
+        <p class="sub" data-reveal style="--i:2">Con varios productos en cierre y ajustes de calidad en varios componentes a la vez, se estabilizaron los despliegues.</p>
+      </div></div>
+      <div class="fgrid fgrid--3">
+        <article class="fc" data-frag>
+          <div class="fc-top">
+            <span class="fc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg></span>
+            <h3>Vulnerabilidades de seguridad corregidas</h3>
+            <span class="fc-n">01</span>
+          </div>
+          <p>Se detectaron y corrigieron vulnerabilidades de seguridad en los componentes desplegados.</p>
+          <p class="fc-why"><b>Por qué importa</b>Las vulnerabilidades detectadas quedan cerradas antes del paso a producción.</p>
+        </article>
+        <article class="fc" data-frag>
+          <div class="fc-top">
+            <span class="fc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="6.5" rx="1.5"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="1.5"/><path d="M7 7.2h.01M7 16.7h.01M11 7.2h6M11 16.7h6"/></svg></span>
+            <h3>Flujos centralizados en una única máquina</h3>
+            <span class="fc-n">02</span>
+          </div>
+          <p>Los flujos de n8n se concentran en una sola máquina. Antes, QA tenía una máquina para todos los componentes y producción, una por componente.</p>
+          <p class="fc-why"><b>Por qué importa</b>Menos máquinas que asegurar y una sola configuración que promover: se reducen los riesgos de seguridad y los bugs en los pasos a producción.</p>
+        </article>
+        <article class="fc" data-frag>
+          <div class="fc-top">
+            <span class="fc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.4L4 8.5"/><path d="M4 4v4.5h4.5"/><path d="M4 13a8 8 0 0 0 14.3 4.4L20 15.5"/><path d="M20 20v-4.5h-4.5"/></svg></span>
+            <h3>Ambientes Dev, QA y Prod sincronizados</h3>
+            <span class="fc-n">03</span>
+          </div>
+          <p>Los tres ambientes quedan con los mismos flujos, las credenciales normalizadas y los repositorios nivelados.</p>
+          <p class="fc-why"><b>Por qué importa</b>Lo que se certifica en QA es lo que llega a producción.</p>
+        </article>
+      </div>
+      <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 21 · Infraestructura</div>
+    </section>
+
     <!-- ===================================================== ESTADO ·· ventas -->
     <section class="slide slide--content slide--prod">
       <div class="slide-head"><div class="titles">
@@ -611,13 +650,12 @@
     <section class="slide slide--content">
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Próximos pasos</span>
-        <h2 data-reveal style="--i:1">Próximas entregas</h2>
+        <h2 data-reveal style="--i:1">Qué sigue</h2>
       </div></div>
       <div class="next-list next-list--desc">
-        <div class="next-item" data-frag><span class="ni-n">01</span><div><span class="ni-v">Reclutamiento</span><span class="ni-t">Afinidad de candidatos en AI Search</span><span class="ni-d">Cada candidato de la búsqueda se califica contra la descripción del perfil: experiencia, seniority, habilidades, idiomas, formación y experiencia con EE. UU. El puntaje se ve en el listado y en la ficha.</span></div></div>
-        <div class="next-item" data-frag><span class="ni-n">02</span><div><span class="ni-v">Ventas</span><span class="ni-t">Prospect Engine España — MVP</span><span class="ni-d">El método que opera en Estados Unidos aplicado a España, con una ejecución controlada para medir volumen y consumo.</span></div></div>
-        <div class="next-item" data-frag><span class="ni-n">03</span><div><span class="ni-v">Ventas</span><span class="ni-t">Nuevo diseño de la Landing de Agendamiento</span><span class="ni-d">Nuevas secciones: propuesta de valor con video en el hero y social proof.</span></div></div>
-        <div class="next-item" data-frag><span class="ni-n">04</span><div><span class="ni-v">Ventas</span><span class="ni-t">Monitoreo del funnel de ventas</span><span class="ni-d">Seguimiento del cold email para comprobar si mejoran la entregabilidad y la conversión.</span></div></div>
+        <div class="next-item" data-frag><span class="ni-n">01</span><div><span class="ni-v">Ventas</span><span class="ni-t">Seguimiento a la detección de prospectos</span><span class="ni-d">Seguimiento de los prospectos que el motor entrega a los SDRs, para mejorar su contactabilidad.</span></div></div>
+        <div class="next-item" data-frag><span class="ni-n">02</span><div><span class="ni-v">Ventas</span><span class="ni-t">Monitoreo del funnel de ventas</span><span class="ni-d">Seguimiento del cold email para comprobar si mejoran la entregabilidad y la conversión.</span></div></div>
+        <div class="next-item" data-frag><span class="ni-n">03</span><div><span class="ni-v">Ventas</span><span class="ni-t">Prospect Engine España — MVP</span><span class="ni-d">El método que opera en Estados Unidos aplicado a España, con una ejecución controlada para medir volumen y consumo.</span></div></div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 21</div>
     </section>
@@ -633,7 +671,7 @@
 
   <div class="controls">
     <button class="ctrl" data-action="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>13</span></span>
+    <span class="counter"><b data-counter-cur>1</b> / <span data-counter-tot>14</span></span>
     <button class="ctrl" data-action="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <button class="ctrl" data-action="fullscreen" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
   </div>
