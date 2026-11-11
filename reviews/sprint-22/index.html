@@ -273,6 +273,26 @@
   .fs { padding: 2.8cqh 1.4cqh 2.8cqh 1.8cqh; }
   .fs-v { font-size: 5.4cqh; }
   .fs-d { font-size: 1.6cqh; }
+
+  /* Términos de búsqueda: posición del catálogo y sus términos en español. */
+  .terms { display: flex; flex-direction: column; gap: 1.8cqh; }
+  .terms-k { font-family: var(--font-mono); font-weight: 600; font-size: 1.35cqh; letter-spacing: .12em; text-transform: uppercase; color: var(--energy-d); }
+  .terms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqh 2.2cqw; border-top: 1px solid var(--line-2); padding-top: 2.2cqh; }
+  .tg h4 { font-family: var(--font-heading); font-weight: 600; font-size: 1.85cqh; color: var(--ink); margin-bottom: 1cqh; }
+  .chips { display: flex; flex-wrap: wrap; gap: .8cqh .5cqw; }
+  .chip { font-size: 1.6cqh; color: var(--ink-2); background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-full); padding: .45cqh 1.1cqh; white-space: nowrap; }
+  .fs-l { line-height: 1.2; }
+  .exec { gap: 5.4cqh; }
+
+  /* Ajuste de la slide de la prueba: términos en la tipografía del cuerpo y bloques más compactos. */
+  .chip { font-family: var(--font-body); font-size: 1.5cqh; padding: .35cqh 1cqh; }
+  .chips { gap: .7cqh .45cqw; }
+  .terms-grid { gap: 2cqh 2.2cqw; padding-top: 1.8cqh; }
+  .tg h4 { font-size: 1.75cqh; margin-bottom: .8cqh; }
+  .exec { gap: 4.2cqh; padding-top: 1.6cqh; }
+  .exec .fs { padding: 2.2cqh 1.4cqh 2.2cqh 1.8cqh; }
+  .exec .fs-v { font-size: 4.8cqh; }
+  .exec .fs-l { font-size: 1.8cqh; }
 </style>
 </head>
 <body>
@@ -435,7 +455,7 @@
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Ventas · MVP · FPES-1</span>
         <h2 data-reveal style="--i:1">España en el motor de prospección</h2>
-        <p class="sub" data-reveal style="--i:2">El método que opera en Estados Unidos, aplicado a 20 ciudades de España.</p>
+        <p class="sub" data-reveal style="--i:2">Detección, calificación y decisores en 20 ciudades de España, con el método de Estados Unidos.</p>
       </div></div>
       <div class="fgrid fgrid--2">
         <article class="fc" data-frag>
@@ -483,31 +503,28 @@
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Ventas · MVP · FPES-1</span>
         <h2 data-reveal style="--i:1">Ejecución controlada</h2>
-        <p class="sub" data-reveal style="--i:2">Un día hábil con las 20 ciudades y 10 términos de búsqueda en español.</p>
+        <p class="sub" data-reveal style="--i:2">Resultados de la prueba con 20 ciudades y 10 términos de búsqueda en español.</p>
       </div></div>
       <div class="exec">
       <ol class="funnel" data-frag>
-        <li class="fs"><span class="fs-v">200</span><span class="fs-l">Búsquedas</span><span class="fs-d">20 ciudades × 10 términos</span></li>
-        <li class="fs"><span class="fs-v">908</span><span class="fs-l">Avisos</span><span class="fs-d">53,5 % pagos</span></li>
-        <li class="fs"><span class="fs-v">194</span><span class="fs-l">Vacantes</span><span class="fs-d">sin pagos ni duplicados</span></li>
-        <li class="fs"><span class="fs-v">63</span><span class="fs-l">Viables</span><span class="fs-d">32,5 % de las vacantes</span></li>
-        <li class="fs"><span class="fs-v">52</span><span class="fs-l">Empresas</span><span class="fs-d">con vacante viable</span></li>
-        <li class="fs"><span class="fs-v">28</span><span class="fs-l">Calificadas</span><span class="fs-d">22 excluidas · 2 sin datos</span></li>
-        <li class="fs fs--end"><span class="fs-v">62</span><span class="fs-l">Decisores</span><span class="fs-d">en 20 empresas · 59 con correo verificado</span></li>
+        <li class="fs"><span class="fs-v">194</span><span class="fs-l">Vacantes detectadas</span></li>
+        <li class="fs"><span class="fs-v">63</span><span class="fs-l">Vacantes que podemos cubrir</span><span class="fs-d">Tasa de acierto 32,5&nbsp;%</span></li>
+        <li class="fs"><span class="fs-v">52</span><span class="fs-l">Empresas con oportunidad</span></li>
+        <li class="fs"><span class="fs-v">52</span><span class="fs-l">Empresas investigadas</span><span class="fs-d">2 sin datos</span></li>
+        <li class="fs"><span class="fs-v">28</span><span class="fs-l">Califican al perfil</span><span class="fs-d">54&nbsp;% de las investigadas</span></li>
+        <li class="fs"><span class="fs-v">20</span><span class="fs-l">Empresas con decisores</span></li>
+        <li class="fs fs--end"><span class="fs-v">62</span><span class="fs-l">Decisores</span><span class="fs-d">59 con correo verificado · 34 en España</span></li>
       </ol>
-      <div class="finds">
-        <article class="fd" data-frag>
-          <span class="fd-v">53,5 %</span>
-          <p>de los avisos son pagos. En 7 ciudades medianas, como Zaragoza, Bilbao o Marbella, quedan entre 1 y 6 vacantes útiles.</p>
-        </article>
-        <article class="fd" data-frag>
-          <span class="fd-v">69 %</span>
-          <p>de los duplicados sale de Barcelona, Terrassa y Badalona, que devuelven en buena parte los mismos avisos de la provincia.</p>
-        </article>
-        <article class="fd" data-frag>
-          <span class="fd-v">45 %</span>
-          <p>de los decisores está fuera de España, en empresas multinacionales.</p>
-        </article>
+      <div class="terms" data-frag>
+        <span class="terms-k">Algunos términos de búsqueda en español</span>
+        <div class="terms-grid">
+          <div class="tg"><h4>Accounting &amp; Finance</h4><div class="chips"><span class="chip">administrativo contable</span><span class="chip">técnico de cuentas a pagar</span><span class="chip">contable</span><span class="chip">técnico contable</span></div></div>
+          <div class="tg"><h4>HR &amp; Recruiting</h4><div class="chips"><span class="chip">técnico de recursos humanos</span><span class="chip">técnico de nóminas</span><span class="chip">técnico de selección</span></div></div>
+          <div class="tg"><h4>Customer Service &amp; Intake</h4><div class="chips"><span class="chip">atención al cliente bilingüe</span><span class="chip">gestor de cobros</span><span class="chip">atención al cliente</span></div></div>
+          <div class="tg"><h4>Inside Sales &amp; Business Development</h4><div class="chips"><span class="chip">comercial de desarrollo de negocio</span><span class="chip">comercial telefónico</span><span class="chip">teleprospector</span></div></div>
+          <div class="tg"><h4>Data &amp; Analytics</h4><div class="chips"><span class="chip">analista de datos</span></div></div>
+          <div class="tg"><h4>Software Development</h4><div class="chips"><span class="chip">desarrollador .net</span><span class="chip">ingeniero qa</span></div></div>
+        </div>
       </div>
       </div>
       <div class="slide-foot"><span class="foot-mark" aria-hidden="true"></span>Sprint Review 22 · Ventas</div>
@@ -518,7 +535,7 @@
       <div class="slide-head"><div class="titles">
         <span class="eyebrow" data-reveal style="--i:0">Ventas · MVP · FPES-1</span>
         <h2 data-reveal style="--i:1">Proyección mensual de consumo</h2>
-        <p class="sub" data-reveal style="--i:2">Consumo por API de la ejecución controlada, llevado a un mes de 22 días hábiles.</p>
+        <p class="sub" data-reveal style="--i:2">Consumo mensual por API, proyectado a 22 días hábiles con 10 y 20 términos de búsqueda.</p>
       </div></div>
       <div class="exec exec--table">
       <div class="ptable" data-frag>
