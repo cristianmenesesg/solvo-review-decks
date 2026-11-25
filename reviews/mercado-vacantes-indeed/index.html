@@ -224,6 +224,7 @@ section.dark { background: #2E206D; }
 .rt .tr .c1.w { width: 440px; }
 .concl.two { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 64px; margin-top: 36px; }
 .concl.two .ci .ct2 { width: auto; font-size: 26px; }
+.tr.dim, .tb .dim { opacity: .45; }
 
 </style>
 </head>
@@ -241,8 +242,8 @@ section.dark { background: #2E206D; }
 
 <section id="embudo">
 <p class="eyebrow">Estados Unidos · Mercado de Indeed</p>
-<h2 class="t">De cada 100 avisos, 10 son de roles de Solvo</h2>
-<p class="lead">Y 4 de esas 10 vacantes se pueden cubrir a distancia.</p>
+<h2 class="t">Roles de Solvo en los avisos de Indeed</h2>
+<p class="lead">Avisos de Indeed, vacantes de roles de Solvo y vacantes que se pueden cubrir a distancia.</p>
 <div class="funnel">
 <div class="unit">
 <div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div>
@@ -268,7 +269,7 @@ section.dark { background: #2E206D; }
 
 <section id="roles-tabla">
 <p class="eyebrow">Estados Unidos · Roles de Solvo</p>
-<h2 class="t">Qué roles concentran las vacantes</h2>
+<h2 class="t">Vacantes por rol</h2>
 <p class="lead">Peso de cada rol en las vacantes, % viables en remoto y salario anual mediano.</p>
 <div class="rt">
 <div class="rcol">
@@ -311,7 +312,7 @@ section.dark { background: #2E206D; }
 
 <section id="cuadrantes">
 <p class="eyebrow">Estados Unidos · Salario y viabilidad</p>
-<h2 class="t">Siete roles pagan bien y se hacen a distancia</h2>
+<h2 class="t">Salario y viabilidad por rol</h2>
 <p class="lead">Bien pagados: USD 60.000 o más al año. Remotos: 75% o más de sus vacantes viables.</p>
 <div class="quad">
 <div class="q best">
@@ -349,14 +350,13 @@ section.dark { background: #2E206D; }
 
 <section id="industrias-tabla">
 <p class="eyebrow">Estados Unidos · Industrias</p>
-<h2 class="t">Salud publica más de un tercio de las vacantes</h2>
+<h2 class="t">Vacantes por industria</h2>
 <p class="lead">Peso de cada industria en las vacantes de roles de Solvo, % viables y salario mediano.</p>
 <div class="rt ind">
 <div class="rcol">
 <div class="tr th"><p class="c1">Industria</p><p class="c2">% vacantes</p><p class="c3">Viables</p><p class="c4">USD</p></div>
 <div class="tr"><p class="c1">Salud</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 100%,#FAF9FE 100%)">36,8%</p><p class="c3">26%</p><p class="c4">44.100</p></div>
 <div class="tr"><p class="c1">Construcción</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 14%,#FAF9FE 14%)">5,3%</p><p class="c3">51%</p><p class="c4">55.000</p></div>
-<div class="tr"><p class="c1">Staffing y reclutamiento</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 12%,#FAF9FE 12%)">4,6%</p><p class="c3">59%</p><p class="c4">54.100</p></div>
 <div class="tr"><p class="c1">Educación</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">4,2%</p><p class="c3">40%</p><p class="c4">51.000</p></div>
 <div class="tr"><p class="c1">Manufactura</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">4,2%</p><p class="c3">56%</p><p class="c4">62.500</p></div>
 <div class="tr"><p class="c1">Tecnología y software</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">4,0%</p><p class="c3 hi">67%</p><p class="c4">98.500</p></div>
@@ -366,10 +366,10 @@ section.dark { background: #2E206D; }
 <div class="tr"><p class="c1">Sector público</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 9%,#FAF9FE 9%)">3,4%</p><p class="c3">46%</p><p class="c4">54.900</p></div>
 <div class="tr"><p class="c1">Servicios profesionales</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 9%,#FAF9FE 9%)">3,3%</p><p class="c3">56%</p><p class="c4">62.400</p></div>
 <div class="tr"><p class="c1">Sin fines de lucro</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 9%,#FAF9FE 9%)">3,2%</p><p class="c3">54%</p><p class="c4">49.900</p></div>
+<div class="tr"><p class="c1">Servicios financieros</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 7%,#FAF9FE 7%)">2,4%</p><p class="c3">52%</p><p class="c4">62.500</p></div>
 </div>
 <div class="rcol">
 <div class="tr th"><p class="c1">Industria</p><p class="c2">% vacantes</p><p class="c3">Viables</p><p class="c4">USD</p></div>
-<div class="tr"><p class="c1">Servicios financieros</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 7%,#FAF9FE 7%)">2,4%</p><p class="c3">52%</p><p class="c4">62.500</p></div>
 <div class="tr"><p class="c1">Servicios legales</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 7%,#FAF9FE 7%)">2,4%</p><p class="c3">54%</p><p class="c4">51.000</p></div>
 <div class="tr"><p class="c1">Automotriz</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 5%,#FAF9FE 5%)">2,0%</p><p class="c3">38%</p><p class="c4">45.800</p></div>
 <div class="tr"><p class="c1">Bienes raíces</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 5%,#FAF9FE 5%)">1,8%</p><p class="c3">45%</p><p class="c4">52.000</p></div>
@@ -380,36 +380,37 @@ section.dark { background: #2E206D; }
 <div class="tr"><p class="c1">Medios</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 2%,#FAF9FE 2%)">0,6%</p><p class="c3">50%</p><p class="c4">60.200</p></div>
 <div class="tr"><p class="c1">Agro</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 1%,#FAF9FE 1%)">0,5%</p><p class="c3">39%</p><p class="c4">48.400</p></div>
 <div class="tr"><p class="c1">Otras industrias</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 14%,#FAF9FE 14%)">5,1%</p><p class="c3">27%</p><p class="c4">41.600</p></div>
+<div class="tr dim"><p class="c1">Staffing y reclutamiento</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 12%,#FAF9FE 12%)">4,6%</p><p class="c3">59%</p><p class="c4">54.100</p></div>
 </div>
 </div>
 <div class="footer"><p class="src">Fuente: Solvo Sales Platform · Indeed EE. UU., 2026 · en negrita, 60% o más de avisos viables</p><div class="pnum"></div></div>
-<aside>Son las 23 industrias de la taxonomía de Solvo Platform. La industria es la de la empresa que publica el aviso, no la del puesto: un contador en un hospital cuenta en Salud. Salud es más de un tercio de las vacantes, pero solo uno de cada cuatro de sus avisos es viable en remoto, porque muchos son recepciones y registros de pacientes. Tecnología y software tiene el salario mediano más alto (USD 98.500) y la mayor proporción de avisos viables (67%). Staffing son agencias que publican avisos de sus clientes.</aside>
+<aside>Son las 23 industrias de la taxonomía de Solvo Platform. La industria es la de la empresa que publica el aviso, no la del puesto: un contador en un hospital cuenta en Salud. Salud es más de un tercio de las vacantes, pero solo uno de cada cuatro de sus avisos es viable en remoto, porque muchos son recepciones y registros de pacientes. Tecnología y software tiene el salario mediano más alto (USD 98.500) y la mayor proporción de avisos viables (67%). Staffing va al final y atenuado: son agencias que publican avisos de sus clientes y compiten con Solvo.</aside>
 </section>
 
 <section id="industria-rol">
 <p class="eyebrow">Estados Unidos · Industria por rol</p>
-<h2 class="t">Cada rol tiene su industria</h2>
+<h2 class="t">Industrias por rol</h2>
 <p class="lead">Las dos industrias que más publican cada rol, en porcentaje de sus avisos.</p>
 <table class="tb" style="margin-top:36px">
-<tr><th style="width:34%">Rol</th><th style="width:33%">Primera industria</th><th style="width:33%">Segunda industria</th></tr>
-<tr><td>Customer Service</td><td>Salud · 27%</td><td>Retail · 9%</td></tr>
-<tr><td>Administrative Assistant</td><td>Salud · 19%</td><td>Gobierno · 13%</td></tr>
-<tr><td>SDR</td><td>Construcción · 12%</td><td>Logística y transporte · 11%</td></tr>
-<tr><td>Accountant</td><td>Servicios profesionales · 13%</td><td>Manufactura · 10%</td></tr>
-<tr><td>Data Analyst</td><td>Tecnología · 14%</td><td>Salud · 12%</td></tr>
-<tr><td>AP/AR Associate</td><td>Salud · 21%</td><td>Manufactura · 11%</td></tr>
-<tr><td>Scheduler</td><td>Salud · 86%</td><td>Servicios profesionales · 3%</td></tr>
-<tr><td>Software Engineer</td><td>Tecnología · 37%</td><td>Manufactura · 15%</td></tr>
-<tr><td>Project Manager</td><td>Construcción · 19%</td><td>Tecnología · 12%</td></tr>
-<tr><td>Dispatcher</td><td>Logística y transporte · 37%</td><td>Construcción · 17%</td></tr>
+<tr><th style="width:30%">Rol</th><th style="width:29%">Primera industria</th><th style="width:29%">Segunda industria</th><th class="dim" style="width:12%">Staffing</th></tr>
+<tr><td>Customer Service</td><td>Salud · 27%</td><td>Retail · 9%</td><td class="dim">2%</td></tr>
+<tr><td>Administrative Assistant</td><td>Salud · 19%</td><td>Gobierno · 13%</td><td class="dim">3%</td></tr>
+<tr><td>SDR</td><td>Construcción · 12%</td><td>Logística y transporte · 11%</td><td class="dim">3%</td></tr>
+<tr><td>Accountant</td><td>Servicios profesionales · 13%</td><td>Manufactura · 10%</td><td class="dim">3%</td></tr>
+<tr><td>Data Analyst</td><td>Tecnología · 14%</td><td>Salud · 12%</td><td class="dim">3%</td></tr>
+<tr><td>AP/AR Associate</td><td>Salud · 21%</td><td>Manufactura · 11%</td><td class="dim">3%</td></tr>
+<tr><td>Scheduler</td><td>Salud · 86%</td><td>Servicios profesionales · 3%</td><td class="dim">1%</td></tr>
+<tr><td>Software Engineer</td><td>Tecnología · 37%</td><td>Manufactura · 15%</td><td class="dim">3%</td></tr>
+<tr><td>Project Manager</td><td>Construcción · 19%</td><td>Tecnología · 12%</td><td class="dim">5%</td></tr>
+<tr><td>Dispatcher</td><td>Logística y transporte · 37%</td><td>Construcción · 17%</td><td class="dim">2%</td></tr>
 </table>
 <div class="footer"><p class="src">Fuente: Solvo Sales Platform · Indeed EE. UU., 2026 · vacantes de roles de Solvo</p><div class="pnum"></div></div>
-<aside>Salud concentra los roles de agenda y apoyo administrativo, y es la primera industria también en atención al cliente y en cuentas a pagar y cobrar. Construcción aparece en ventas, proyectos y despacho. Tecnología domina software y datos. Health Care Associate, que no está en la tabla, publica el 87% de sus avisos en Salud.</aside>
+<aside>Salud concentra los roles de agenda y apoyo administrativo, y es la primera industria también en atención al cliente y en cuentas a pagar y cobrar. Construcción aparece en ventas, proyectos y despacho. Tecnología domina software y datos. Health Care Associate, que no está en la tabla, publica el 87% de sus avisos en Salud. La última columna, atenuada, es la parte que publican agencias de staffing, que compiten con Solvo.</aside>
 </section>
 
 <section id="estados-lista">
 <p class="eyebrow">Estados Unidos · Geografía</p>
-<h2 class="t">La demanda está repartida entre los estados</h2>
+<h2 class="t">Vacantes por estado</h2>
 <p class="lead">Vacantes de roles de Solvo por cada 100 avisos de Indeed en cada estado. Promedio: 9,8.</p>
 <div class="slist">
 <div class="scol">
@@ -485,8 +486,8 @@ section.dark { background: #2E206D; }
 
 <section id="es-embudo">
 <p class="eyebrow">España · Noviembre de 2026 · Avisos que detecta Solvo Sales Platform</p>
-<h2 class="t">4 de cada 10 avisos son de roles de Solvo</h2>
-<p class="lead">Y 3 de cada 4 de esas vacantes se pueden cubrir a distancia.</p>
+<h2 class="t">Roles de Solvo en los avisos detectados</h2>
+<p class="lead">Avisos detectados, vacantes de roles de Solvo y vacantes que se pueden cubrir a distancia.</p>
 <div class="funnel">
 <div class="unit">
 <div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u via"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u icp"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div><div class="u"></div>
@@ -503,7 +504,7 @@ section.dark { background: #2E206D; }
 
 <section id="es-roles-tabla">
 <p class="eyebrow">España · Noviembre de 2026 · Roles de Solvo</p>
-<h2 class="t">Qué roles concentran las vacantes en España</h2>
+<h2 class="t">Vacantes por rol</h2>
 <p class="lead">Peso de cada rol en las vacantes, % viables en remoto y salario anual mediano.</p>
 <div class="rt">
 <div class="rcol">
@@ -540,7 +541,7 @@ section.dark { background: #2E206D; }
 
 <section id="es-cuadrantes">
 <p class="eyebrow">España · Noviembre de 2026 · Salario y viabilidad</p>
-<h2 class="t">Cinco roles pagan bien y se hacen a distancia</h2>
+<h2 class="t">Salario y viabilidad por rol</h2>
 <p class="lead">Bien pagados: EUR 28.000 o más al año. Remotos: 75% o más de sus vacantes viables.</p>
 <div class="quad">
 <div class="q best">
@@ -578,13 +579,12 @@ section.dark { background: #2E206D; }
 
 <section id="es-industrias-tabla">
 <p class="eyebrow">España · Noviembre de 2026 · Industrias</p>
-<h2 class="t">Tecnología y las ETT publican un tercio de las vacantes</h2>
+<h2 class="t">Vacantes por industria</h2>
 <p class="lead">Peso de cada industria en las vacantes de roles de Solvo, % viables y salario mediano.</p>
 <div class="rt ind">
 <div class="rcol">
 <div class="tr th"><p class="c1">Industria</p><p class="c2">% vacantes</p><p class="c3">Viables</p><p class="c4">EUR</p></div>
 <div class="tr"><p class="c1">Tecnología y software</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 100%,#FAF9FE 100%)">18,9%</p><p class="c3">78%</p><p class="c4">36.800</p></div>
-<div class="tr"><p class="c1">Staffing y ETT</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 90%,#FAF9FE 90%)">17,0%</p><p class="c3">72%</p><p class="c4">23.000</p></div>
 <div class="tr"><p class="c1">Servicios profesionales</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 58%,#FAF9FE 58%)">11,0%</p><p class="c3 hi">82%</p><p class="c4">20.000</p></div>
 <div class="tr"><p class="c1">Salud</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 41%,#FAF9FE 41%)">7,7%</p><p class="c3">59%</p><p class="c4">22.800</p></div>
 <div class="tr"><p class="c1">Manufactura</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 36%,#FAF9FE 36%)">6,8%</p><p class="c3 hi">83%</p><p class="c4">22.500</p></div>
@@ -595,10 +595,10 @@ section.dark { background: #2E206D; }
 <div class="tr"><p class="c1">Servicios financieros</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 12%,#FAF9FE 12%)">2,3%</p><p class="c3 hi">88%</p><p class="c4">41.600</p></div>
 <div class="tr"><p class="c1">Sin fines de lucro</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">2,1%</p><p class="c3">55%</p><p class="c4">21.000</p></div>
 <div class="tr"><p class="c1">Marketing y publicidad</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">2,1%</p><p class="c3">79%</p><p class="c4">27.500</p></div>
+<div class="tr"><p class="c1">Seguros</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">2,1%</p><p class="c3">79%</p><p class="c4">—</p></div>
 </div>
 <div class="rcol">
 <div class="tr th"><p class="c1">Industria</p><p class="c2">% vacantes</p><p class="c3">Viables</p><p class="c4">EUR</p></div>
-<div class="tr"><p class="c1">Seguros</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">2,1%</p><p class="c3">79%</p><p class="c4">—</p></div>
 <div class="tr"><p class="c1">Automotriz</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 11%,#FAF9FE 11%)">2,0%</p><p class="c3">66%</p><p class="c4">—</p></div>
 <div class="tr"><p class="c1">Energía y servicios</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 10%,#FAF9FE 10%)">1,8%</p><p class="c3">71%</p><p class="c4">—</p></div>
 <div class="tr"><p class="c1">Sector público</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 8%,#FAF9FE 8%)">1,5%</p><p class="c3">52%</p><p class="c4">19.800</p></div>
@@ -609,36 +609,37 @@ section.dark { background: #2E206D; }
 <div class="tr"><p class="c1">Telecomunicaciones</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 3%,#FAF9FE 3%)">0,6%</p><p class="c3">75%</p><p class="c4">—</p></div>
 <div class="tr"><p class="c1">Agro</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 2%,#FAF9FE 2%)">0,3%</p><p class="c3">—</p><p class="c4">—</p></div>
 <div class="tr"><p class="c1">Otras industrias</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 2%,#FAF9FE 2%)">0,4%</p><p class="c3">—</p><p class="c4">—</p></div>
+<div class="tr dim"><p class="c1">Staffing y ETT</p><p class="c2" style="background:linear-gradient(90deg,#D8CFF9 90%,#FAF9FE 90%)">17,0%</p><p class="c3">72%</p><p class="c4">23.000</p></div>
 </div>
 </div>
 <div class="footer"><p class="src">Fuente: Solvo Sales Platform · Indeed España, del 11 al 25 de noviembre de 2026 · en negrita, 80% o más viables</p><div class="pnum"></div></div>
-<aside>Las 23 industrias de la taxonomía de Solvo Platform, por la empresa que publica el aviso. Tecnología y software y las agencias de staffing y ETT suman el 36% de las vacantes de roles de Solvo en España; en EE. UU. Salud es más de un tercio y aquí no llega al 9%. Las ETT publican sobre todo administración, atención al cliente y contabilidad para sus clientes. La viabilidad y el salario se muestran para las industrias con 10 o más avisos y 10 o más salarios publicados.</aside>
+<aside>Las 23 industrias de la taxonomía de Solvo Platform, por la empresa que publica el aviso. Tecnología y software es la primera industria en España (19%); en EE. UU. lo es Salud, que aquí no llega al 9%. Staffing y ETT va al final y atenuado: son agencias que publican vacantes de sus clientes y compiten con Solvo; en España pesan más que en EE. UU. La viabilidad y el salario se muestran para las industrias con 10 o más avisos y 10 o más salarios publicados.</aside>
 </section>
 
 <section id="es-industria-rol">
 <p class="eyebrow">España · Noviembre de 2026 · Industria por rol</p>
-<h2 class="t">Las ETT publican la administración y la contabilidad</h2>
+<h2 class="t">Industrias por rol</h2>
 <p class="lead">Las dos industrias que más publican cada rol, en porcentaje de sus avisos.</p>
 <table class="tb" style="margin-top:36px">
-<tr><th style="width:34%">Rol</th><th style="width:33%">Primera industria</th><th style="width:33%">Segunda industria</th></tr>
-<tr><td>Administrative Assistant</td><td>Staffing y ETT · 26%</td><td>Retail · 11%</td></tr>
-<tr><td>Customer Service</td><td>Staffing y ETT · 20%</td><td>Servicios profesionales · 15%</td></tr>
-<tr><td>Software Engineer</td><td>Tecnología · 55%</td><td>Servicios profesionales · 10%</td></tr>
-<tr><td>Data Analyst</td><td>Tecnología · 35%</td><td>Logística y transporte · 11%</td></tr>
-<tr><td>Marketing Associate</td><td>Tecnología · 18%</td><td>Retail · 14%</td></tr>
-<tr><td>Software Development</td><td>Tecnología · 69%</td><td>Servicios profesionales · 9%</td></tr>
-<tr><td>SDR</td><td>Servicios profesionales · 24%</td><td>Tecnología · 19%</td></tr>
-<tr><td>Project Manager</td><td>Tecnología · 23%</td><td>Servicios profesionales · 14%</td></tr>
-<tr><td>Accountant</td><td>Staffing y ETT · 46%</td><td>Hotelería · 7%</td></tr>
-<tr><td>Account Manager</td><td>Servicios profesionales · 24%</td><td>Tecnología · 24%</td></tr>
+<tr><th style="width:30%">Rol</th><th style="width:29%">Primera industria</th><th style="width:29%">Segunda industria</th><th class="dim" style="width:12%">Staffing y ETT</th></tr>
+<tr><td>Administrative Assistant</td><td>Retail · 11%</td><td>Servicios profesionales · 9%</td><td class="dim">26%</td></tr>
+<tr><td>Customer Service</td><td>Servicios profesionales · 15%</td><td>Hotelería · 13%</td><td class="dim">20%</td></tr>
+<tr><td>Software Engineer</td><td>Tecnología · 55%</td><td>Servicios profesionales · 10%</td><td class="dim">1%</td></tr>
+<tr><td>Data Analyst</td><td>Tecnología · 35%</td><td>Logística y transporte · 11%</td><td class="dim">3%</td></tr>
+<tr><td>Marketing Associate</td><td>Tecnología · 18%</td><td>Retail · 14%</td><td class="dim">7%</td></tr>
+<tr><td>Software Development</td><td>Tecnología · 69%</td><td>Servicios profesionales · 9%</td><td class="dim">4%</td></tr>
+<tr><td>SDR</td><td>Servicios profesionales · 24%</td><td>Tecnología · 19%</td><td class="dim">16%</td></tr>
+<tr><td>Project Manager</td><td>Tecnología · 23%</td><td>Servicios profesionales · 14%</td><td class="dim">9%</td></tr>
+<tr><td>Accountant</td><td>Hotelería · 7%</td><td>Salud · 6%</td><td class="dim">46%</td></tr>
+<tr><td>Account Manager</td><td>Servicios profesionales · 24%</td><td>Tecnología · 24%</td><td class="dim">12%</td></tr>
 </table>
 <div class="footer"><p class="src">Fuente: Solvo Sales Platform · Indeed España, del 11 al 25 de noviembre de 2026 · vacantes de roles de Solvo</p><div class="pnum"></div></div>
-<aside>En España las ETT y agencias de staffing son la primera industria en administración, atención al cliente y contabilidad: publican vacantes de sus clientes. Tecnología domina software, datos y proyectos. Ventas y gestión de cuentas se reparten entre servicios profesionales y tecnología.</aside>
+<aside>Staffing y ETT van aparte y atenuadas: compiten con Solvo y publican vacantes de sus clientes, sobre todo de administración, atención al cliente y contabilidad. Sin ellas, tecnología domina software, datos y proyectos, y servicios profesionales aparece en ventas y gestión de cuentas.</aside>
 </section>
 
 <section id="es-donde">
 <p class="eyebrow">España · Noviembre de 2026 · Dónde y en qué idioma</p>
-<h2 class="t">Madrid y Cataluña: siete de cada diez vacantes</h2>
+<h2 class="t">Vacantes por comunidad e idioma</h2>
 <p class="lead">Peso de cada comunidad en las vacantes de roles de Solvo, y los idiomas que piden los avisos.</p>
 <div class="rt">
 <div class="rcol">
@@ -671,7 +672,7 @@ section.dark { background: #2E206D; }
 
 <section id="icp-empresas">
 <p class="eyebrow">Empresas · ICP de Solvo</p>
-<h2 class="t">Una de cada dos empresas está en el ICP de Solvo</h2>
+<h2 class="t">Empresas dentro y fuera del ICP</h2>
 <p class="lead">Empresas con tamaño e industria conocidos y al menos una vacante viable de roles de Solvo.</p>
 <div class="rt">
 <div class="rcol">
@@ -682,7 +683,7 @@ section.dark { background: #2E206D; }
 <div class="tr"><p class="c1 w">· de 301 a 1.000 empleados</p><p class="c2">13%</p><p class="c3">15%</p></div>
 <div class="tr"><p class="c1 w">Fuera: más de 1.000 empleados</p><p class="c2">40%</p><p class="c3">48%</p></div>
 <div class="tr"><p class="c1 w">Fuera: sector público</p><p class="c2">3%</p><p class="c3">0%</p></div>
-<div class="tr"><p class="c1 w">Fuera: staffing y ETT</p><p class="c2">2%</p><p class="c3">7%</p></div>
+<div class="tr dim"><p class="c1 w">Fuera: staffing y ETT</p><p class="c2">2%</p><p class="c3">7%</p></div>
 <div class="tr"><p class="c1 w">Del ICP, calificadas con 50 o más</p><p class="c2">46%</p><p class="c3">66%</p></div>
 </div>
 <div class="rcol">
@@ -708,7 +709,7 @@ section.dark { background: #2E206D; }
 
 <section id="mercado-posiciones">
 <p class="eyebrow">Estados Unidos · Dónde hay mercado · Posiciones</p>
-<h2 class="t">Seis posiciones suman la mitad del mercado viable</h2>
+<h2 class="t">Mercado viable por posición</h2>
 <p class="lead">Vacantes viables por cada 1.000 avisos, salario mediano y su peso en la suma de salarios de las vacantes viables.</p>
 <div class="rt wide">
 <div class="rcol">
@@ -734,7 +735,7 @@ section.dark { background: #2E206D; }
 
 <section id="mercado-industrias">
 <p class="eyebrow">Estados Unidos · Dónde hay mercado · Industrias</p>
-<h2 class="t">Salud y tecnología suman un tercio del mercado viable</h2>
+<h2 class="t">Mercado viable por industria</h2>
 <p class="lead">Peso de cada industria en la suma de salarios de las vacantes viables, y las combinaciones con más vacantes viables.</p>
 <div class="rt">
 <div class="rcol">
@@ -769,15 +770,15 @@ section.dark { background: #2E206D; }
 </section>
 
 <section id="sugerencias" class="dark">
-<p class="eyebrow">Sugerencias para ventas</p>
-<h2 class="t">Dónde enfocar los esfuerzos comerciales</h2>
+<p class="eyebrow">Cierre</p>
+<h2 class="t">Sugerencias para ventas</h2>
 <div class="concl two">
 <div class="ci"><p class="n">1</p><p class="ct2"><b>Back-office financiero en empresas del ICP.</b> Accountant, AP/AR, Bookkeeper, Payroll y Collections: de 72% a 90% de avisos viables, de USD 47.100 a 72.500, y las empresas del ICP publican de 46% a 78% de sus vacantes viables.</p></div>
 <div class="ci"><p class="n">2</p><p class="ct2"><b>Software y datos en empresas medianas.</b> Pagan de USD 102.300 a 130.000 y tienen de 71% a 93% de avisos viables, pero de 6 a 8 de cada 10 de sus vacantes viables las publican empresas fuera del ICP, sobre todo grandes corporaciones: el foco son las medianas de tecnología y servicios financieros y profesionales.</p></div>
 <div class="ci"><p class="n">3</p><p class="ct2"><b>Salud, por agenda y facturación.</b> Es la industria con más vacantes, pero solo 26% son viables. Las que sí lo son: agenda, cuentas a pagar y cobrar, reclutamiento y datos; no recepción ni apoyo clínico.</p></div>
 <div class="ci"><p class="n">4</p><p class="ct2"><b>Administración y atención al cliente, con filtro.</b> Son 13 de cada 1.000 avisos y el 24% del valor del mercado viable, pero solo 20% y 44% de sus avisos son viables: trabajar los que el clasificador marca viables.</p></div>
 <div class="ci"><p class="n">5</p><p class="ct2"><b>Estados con más mercado.</b> Texas, Michigan, Georgia y Nueva York tienen de 49 a 60 vacantes viables por cada 1.000 avisos; el promedio es 39, y Dakota del Sur, Montana y Kansas rondan de 22 a 25.</p></div>
-<div class="ci"><p class="n">6</p><p class="ct2"><b>España: tecnología y marketing en empresas medianas.</b> 3 de cada 4 vacantes son viables. Software Development y Marketing son las posiciones que más publican empresas del ICP (66% y 58%); administración, atención al cliente y contabilidad las publican sobre todo grandes empresas y ETT.</p></div>
+<div class="ci"><p class="n">6</p><p class="ct2"><b>España: tecnología y marketing en empresas medianas.</b> 3 de cada 4 vacantes son viables. Software Development y Marketing son las posiciones que más publican empresas del ICP (66% y 58%); administración, atención al cliente y contabilidad las publican sobre todo empresas fuera del ICP.</p></div>
 </div>
 <div class="footer"><p class="src">Fuente: Solvo Sales Platform · Avisos de Indeed, 2026</p><div class="pnum"></div></div>
 <aside>Cada sugerencia sale de las diapositivas anteriores. Las cifras de EE. UU. son de las vacantes de roles de Solvo; las de España, de la muestra de noviembre. El orden va de la oportunidad más clara, alta viabilidad y buen salario en empresas del ICP, a las de volumen que piden filtrar.</aside>
