@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Current Client Openings for Sales Reps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap">
+<style>
+* { margin: 0 }
+html, body { height: 100%; }
+body { font: 32px/1.2 sans-serif; background: #003440; overflow: hidden; }
+h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
+table { width: 100%; border-collapse: separate; border-spacing: 0; border: solid #26292B22; border-width: 2px 0 0 2px }
+th, td { padding: .35em .6em; text-align: left; border: solid #26292B22; border-width: 0 2px 2px 0 }
+th { font-weight: 700 }
+.stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%) scale(var(--s, 0.5)); }
+.stage > section { position: absolute; inset: 0; width: 1920px; height: 1080px; box-sizing: border-box; overflow: hidden; visibility: hidden; }
+.stage > section.on { visibility: visible; }
+.stage > section:not(.on) * { animation: none !important; }
+aside { display: none; }
+#notes { position: fixed; left: 0; right: 0; bottom: 0; max-height: 30vh; overflow: auto; background: #F9F9F9; color: #26292B; font: 16px/1.5 'Wix Madefor Text', Arial, sans-serif; padding: 16px 24px; border-top: 4px solid #0089AB; display: none; }
+body.notes #notes { display: block; }
+#hint { position: fixed; right: 16px; bottom: 12px; color: #B3DEE9; font: 13px 'Wix Madefor Text', Arial, sans-serif; opacity: .7; }
+body.notes #hint { display: none; }
+@media print {
+  @page { size: 1920px 1080px; margin: 0 }
+  html, body { height: auto; overflow: visible; background: none; }
+  .stage { position: static; transform: none; width: auto; height: auto; }
+  .stage > section { position: relative; visibility: visible; page-break-after: always; break-after: page; }
+  .stage > section * { animation: none !important; }
+  #notes, #hint { display: none !important; }
+}
+
+/* ---- estilos del deck (Solvo Global marketing) ---- */
+:root {
+  --ink: #26292B;
+  --body: #53585A;
+  --muted: #656971;
+  --teal: #0089AB;
+  --teal-600: #00748D;
+  --teal-700: #005F74;
+  --teal-tint: #E6F4F8;
+  --orange: #ED7422;
+  --orange-600: #D05D15;
+  --amber-tint: #FBEBD5;
+  --bg: #F9F9F9;
+  --surface: #FFFFFF;
+  --line: #E3E3E3;
+  --on-teal: #FFFFFF;
+  --on-teal-soft: #D7EEF3;
+}
+
+body { font-family: 'Wix Madefor Text', Arial, sans-serif; color: var(--body); }
+
+section {
+  background: var(--bg);
+  padding: 128px 128px 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  counter-increment: page;
+}
+
+h1, h2, h3 { font-family: 'Poppins', Arial, sans-serif; color: var(--ink); }
+h2 { font-size: 60px; font-weight: 600; line-height: 1.15; }
+h3 { font-size: 34px; font-weight: 600; line-height: 1.25; }
+
+/* Cabecera de cada slide de contenido */
+.head { display: flex; flex-direction: column; gap: 20px; }
+.head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; color: var(--teal-600); }
+.bar { width: 120px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #E99B35 0%, #D15E14 49%, #0089AB 100%); }
+
+.lead { font-size: 28px; line-height: 1.45; color: var(--body); }
+.small { font-size: 24px; line-height: 1.45; color: var(--muted); }
+.pill { font-size: 24px; font-weight: 600; color: var(--teal-700); background: var(--teal-tint); padding: 8px 20px; border-radius: 999px; }
+.pill-pin { position: absolute; top: 116px; right: 128px; width: 220px; box-sizing: border-box; text-align: center; }
+
+/* Pie: logo, nombre del deck y número de página */
+.footer { position: absolute; left: 128px; bottom: 64px; width: 1664px; height: 24px; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { display: flex; align-items: center; gap: 20px; }
+.footer-logo { width: 72px; height: 24px; object-fit: contain; }
+.footer-text { font-size: 24px; color: var(--muted); }
+.pnum { font-size: 24px; color: var(--muted); }
+.pnum::after { content: counter(page); }
+
+/* Portada */
+.cover { background: linear-gradient(115deg, #00748D 0%, #005F74 100%); padding: 128px; justify-content: center; gap: 40px; }
+.cover-logo { width: 240px; height: 80px; object-fit: contain; }
+.cover-eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; color: var(--on-teal-soft); }
+.cover-title { font-size: 120px; font-weight: 700; line-height: 1.05; color: var(--on-teal); }
+.cover-sub { font-size: 34px; line-height: 1.4; color: var(--on-teal); width: 1180px; }
+.cover-bar { width: 160px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, #E99B35 0%, #D15E14 49%, #00BED6 100%); }
+
+/* Tarjetas */
+.row { display: flex; gap: 32px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.card { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 8px 24px rgba(38, 41, 43, 0.06); }
+.card-text { font-size: 24px; line-height: 1.45; color: var(--body); }
+.card-text-lg { font-size: 28px; line-height: 1.45; color: var(--body); }
+.num { font-family: 'Poppins', Arial, sans-serif; font-size: 60px; font-weight: 700; line-height: 1; color: var(--orange-600); }
+.stat { font-family: 'Poppins', Arial, sans-serif; font-size: 120px; font-weight: 700; line-height: 1; color: var(--teal-600); }
+.icon-wrap { width: 72px; height: 72px; border-radius: 20px; background: var(--teal-tint); display: flex; align-items: center; justify-content: center; }
+.icon { width: 40px; height: 40px; color: var(--teal-600); }
+
+/* Correo de ejemplo */
+.mail { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(38, 41, 43, 0.06); overflow: hidden; }
+.mail-head { background: var(--teal-tint); padding: 24px 32px; display: flex; flex-direction: column; gap: 8px; }
+.mail-meta { font-size: 24px; color: var(--ink); }
+.mail-body { padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 16px; }
+.mail-hello { font-size: 24px; color: var(--ink); }
+.mail-table { font-size: 24px; color: var(--ink); width: 100%; }
+.mail-link { color: var(--teal-600); }
+.note-title { font-family: 'Poppins', Arial, sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); }
+
+/* Clips de la plataforma */
+.clips { display: flex; gap: 40px; }
+.clip { width: 528px; display: flex; flex-direction: column; gap: 24px; }
+.clip-frame { width: 528px; height: 330px; border-radius: 20px; border: 1px solid var(--line); object-fit: cover; background: var(--surface); box-shadow: 0 8px 24px rgba(38, 41, 43, 0.08); }
+.clip-cap { display: flex; flex-direction: column; gap: 10px; }
+.clip-step { font-size: 24px; font-weight: 700; letter-spacing: 2px; color: var(--orange-600); }
+
+/* Entrada escalonada */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.rise { animation: rise 520ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+
+</style>
+</head>
+<body>
+<div class="stage">
+<section id="cover" class="cover" data-transition="fade">
+<img class="cover-logo" src="logo-white.png" alt="Solvo Global">
+<div class="cover-bar"></div>
+<p class="cover-eyebrow">SOLVO SALES PLATFORM · FOR SALES REPS</p>
+<h1 class="cover-title">Current Client<br>Openings</h1>
+<p class="cover-sub">New job postings from your clients, checked every week and sent to your inbox.</p>
+<aside>This is a short walkthrough of the automation that watches your clients’ job postings. In five minutes: what it does, what reaches your inbox, and where to find everything in Solvo Platform.</aside>
+</section>
+
+<section id="what" data-transition="fade">
+<div class="head">
+<p class="eyebrow">WHAT IT DOES</p>
+<div class="bar"></div>
+</div>
+<h2>Every week, the system checks each of your clients on Indeed and LinkedIn, keeps the new postings Solvo can fill, and emails them to you.</h2>
+<div class="row">
+<div class="card rise" style="--i:1"><p class="stat">158</p><p class="card-text-lg">clients monitored today</p></div>
+<div class="card rise" style="--i:2"><p class="stat">2</p><p class="card-text-lg">job portals: Indeed and LinkedIn</p></div>
+<div class="card rise" style="--i:3"><p class="stat">1</p><p class="card-text-lg">email per client, only when it has new postings</p></div>
+</div>
+<div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
+<aside>In one sentence: the system watches your clients’ job postings so you don’t have to. It looks at Indeed and LinkedIn, keeps only the postings Solvo can actually fill, and sends them to you by email. Today it covers 158 client companies. Clients are split across the weekdays, so each one is checked once a week. Every new posting is read by AI and kept only if it passes three checks: a support role Solvo covers, work that can be done remotely (even if posted as on-site), and no US state license required. The first time a client has new postings, the system also researches the company once: website, industry, size, revenue and what it does. Clients are not scored and no contacts are searched for them.</aside>
+</section>
+
+<section id="platform" data-transition="fade">
+<div class="head">
+<p class="eyebrow">IN SOLVO PLATFORM</p>
+<div class="bar"></div>
+</div>
+<h2>Where to find your clients’ positions</h2>
+<div class="clips">
+<div class="clip rise" style="--i:1">
+<video class="clip-frame" src="find.webm" poster="find.jpg" muted loop playsinline preload="auto" aria-label="Open Positions: removing the Has decision makers filter and filtering by Relationship: Client"></video>
+<div class="clip-cap"><p class="clip-step">STEP 1</p><h3>See your clients’ positions</h3><p class="card-text">In Open Positions, remove “Has decision makers”, then Filters › Relationship › Client.</p></div>
+</div>
+<div class="clip rise" style="--i:2">
+<video class="clip-frame" src="read.webm" poster="read.jpg" muted loop playsinline preload="auto" aria-label="A client position: remote viability, the reason, salary and the link to the original posting"></video>
+<div class="clip-cap"><p class="clip-step">STEP 2</p><h3>Open a position</h3><p class="card-text">See why Solvo can fill it, the salary, and the link to the original posting.</p></div>
+</div>
+<div class="clip rise" style="--i:3">
+<video class="clip-frame" src="client.webm" poster="client.jpg" muted loop playsinline preload="auto" aria-label="The client’s company page: size, revenue, what the company does and its open positions"></video>
+<div class="clip-cap"><p class="clip-step">STEP 3</p><h3>Check your client’s profile</h3><p class="card-text">What the company does, its size and revenue, and all its open positions.</p></div>
+</div>
+</div>
+<p class="pill pill-pin">Sample data</p>
+<div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
+<aside>Three short clips, recorded on the Solvo Platform prototype with sample data. Step 1: Open Positions starts filtered to companies with decision makers, and clients don’t have them, so remove that chip first. Then open Filters, go to Relationship and pick Client. Step 2: open any position to see why it’s viable, the salary and the button to the original posting. Step 3: click the company name to see the client’s profile and the Positions tab with everything it has posted.</aside>
+</section>
+
+<section id="email" data-transition="fade">
+<div class="head">
+<p class="eyebrow">YOUR EMAIL</p>
+<div class="bar"></div>
+</div>
+<h2>One email per client, only with what’s new</h2>
+<div class="mail rise" style="--i:1">
+<div class="mail-head">
+<p class="mail-meta"><b>From:</b> Claire Bennett &lt;claire.bennett@solvoglobal.com&gt;</p>
+<p class="mail-meta"><b>Subject:</b> New Vacancies Detected: Cedarline Health Partners</p>
+</div>
+<div class="mail-body">
+<p class="mail-hello">Hello María,</p>
+<table class="mail-table">
+<tr><th style="width:34%">Job Title</th><th style="width:14%">Location</th><th style="width:12%">Source</th><th style="width:24%">Salary</th><th style="width:16%">Action</th></tr>
+<tr><td>Patient Scheduling Coordinator</td><td>Tampa, FL</td><td>Indeed</td><td>$19 - $22 / hour</td><td class="mail-link">View Job →</td></tr>
+<tr><td>Medical Billing Specialist</td><td>Tampa, FL</td><td>LinkedIn</td><td>$45K - $55K / year</td><td class="mail-link">View Job →</td></tr>
+<tr><td>Bilingual Patient Service Rep.</td><td>Tampa, FL</td><td>Indeed</td><td>$18 - $20 / hour</td><td class="mail-link">View Job →</td></tr>
+</table>
+</div>
+</div>
+<div class="row">
+<div class="rise" style="--i:2; flex:1; display:flex; flex-direction:column; gap:8px"><p class="note-title">From Claire Bennett</p><p class="card-text">So it reaches your inbox, not spam.</p></div>
+<div class="rise" style="--i:3; flex:1; display:flex; flex-direction:column; gap:8px"><p class="note-title">Only new, only viable</p><p class="card-text">Postings detected in the last 24 hours that Solvo can fill.</p></div>
+<div class="rise" style="--i:4; flex:1; display:flex; flex-direction:column; gap:8px"><p class="note-title">Nothing new, no email</p><p class="card-text">A client without new viable postings sends nothing.</p></div>
+</div>
+<p class="pill pill-pin">Example</p>
+<div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
+<aside>This is what you receive. One email per client, from Claire Bennett, with the subject “New Vacancies Detected” and the client’s name. Each row is a new posting with its location, the portal it came from, the salary when the posting shows one (otherwise it says Not listed) and a link to the original job. It only lists postings Solvo can fill that were detected in the last 24 hours. If a client has nothing new, you get no email for that client. The client and the rows here are an example.</aside>
+</section>
+
+<section id="tips" data-transition="fade">
+<div class="head">
+<p class="eyebrow">GOOD TO KNOW</p>
+<div class="bar"></div>
+</div>
+<h2>Four things to keep in mind</h2>
+<div class="grid2">
+<div class="card rise" style="--i:1"><h3>You only see your clients</h3><p class="card-text-lg">Solvo Platform shows the companies and positions where you are the assigned Sales Rep.</p></div>
+<div class="card rise" style="--i:2"><h3>Remove “Has decision makers”</h3><p class="card-text-lg">Contacts aren’t searched for clients, so that default filter hides their positions.</p></div>
+<div class="card rise" style="--i:3"><h3>Not viable is hidden by default</h3><p class="card-text-lg">Switch Remote viability to Both to see everything your client posted.</p></div>
+<div class="card rise" style="--i:4"><h3>The email covers the last 24 hours</h3><p class="card-text-lg">Everything detected before that stays in Solvo Platform.</p></div>
+</div>
+<div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
+<aside>To close, four practical points. You see only the clients assigned to you. When you open Open Positions, remove “Has decision makers” or your clients’ positions won’t show. The list starts with viable positions only; switch to Both if you want to see everything a client posted. And the email is a daily summary of what’s new: the full history is always in Solvo Platform.</aside>
+</section>
+
+</div>
+<div id="notes"></div>
+<div id="hint">← → navigate · N notes · F full screen</div>
+<script>
+const S=[...document.querySelectorAll('.stage > section')];let i=0;
+const fit=()=>document.querySelector('.stage').style.setProperty('--s',Math.min(innerWidth/1920,innerHeight/1080));
+const show=n=>{i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k===i));
+ document.querySelectorAll('video').forEach(v=>{if(S[i].contains(v)){v.currentTime=0;v.play().catch(()=>{})}else v.pause()});
+ const a=S[i].querySelector('aside');document.getElementById('notes').textContent=a?a.textContent.trim():'No notes.';history.replaceState(null,'','#'+(i+1));};
+addEventListener('resize',fit);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(i+1)}
+ else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}
+ else if(e.key==='Home')show(0);else if(e.key==='End')show(S.length-1);
+ else if(e.key==='n'||e.key==='N')document.body.classList.toggle('notes');
+ else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}});
+addEventListener('click',e=>{if(e.target.closest('#notes'))return;show(e.clientX<innerWidth/3?i-1:i+1)});
+fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>
