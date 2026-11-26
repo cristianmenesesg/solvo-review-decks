@@ -121,6 +121,17 @@ h3 { font-size: 34px; font-weight: 600; line-height: 1.25; }
 .clip-cap { display: flex; flex-direction: column; gap: 10px; }
 .clip-step { font-size: 24px; font-weight: 700; letter-spacing: 2px; color: var(--orange-600); }
 
+/* Interfaces una a una: título fijo, clip grande, leyenda y avance */
+.shots-slide { padding: 48px 128px 40px; gap: 20px; }
+.shots-head { display: flex; flex-direction: column; gap: 8px; }
+.shots-title { font-size: 40px; font-weight: 600; line-height: 1.15; }
+.shot-frame { width: 1248px; height: 780px; align-self: center; border-radius: 20px; border: 1px solid var(--line); object-fit: contain; background: var(--surface); box-shadow: 0 16px 40px rgba(38, 41, 43, 0.14); }
+.shot-cap { font-size: 28px; line-height: 1.3; color: var(--body); text-align: center; }
+.dots { display: flex; gap: 16px; justify-content: center; }
+.dot { width: 16px; height: 16px; border-radius: 8px; background: var(--line); }
+.dot-on { background: var(--orange); }
+.pill-top { top: 44px; }
+
 /* Entrada escalonada */
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 .rise { animation: rise 520ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 110ms); }
@@ -140,42 +151,54 @@ h3 { font-size: 34px; font-weight: 600; line-height: 1.25; }
 
 <section id="what" data-transition="fade">
 <div class="head">
-<p class="eyebrow">WHAT IT DOES</p>
+<p class="eyebrow">HOW IT WORKS</p>
 <div class="bar"></div>
 </div>
-<h2>Every week, the system checks each of your clients on Indeed and LinkedIn, keeps the new postings Solvo can fill, and emails them to you.</h2>
+<h2>From your client’s job post to your inbox</h2>
 <div class="row">
-<div class="card rise" style="--i:1"><p class="stat">158</p><p class="card-text-lg">clients monitored today</p></div>
-<div class="card rise" style="--i:2"><p class="stat">2</p><p class="card-text-lg">job portals: Indeed and LinkedIn</p></div>
-<div class="card rise" style="--i:3"><p class="stat">1</p><p class="card-text-lg">email per client, only when it has new postings</p></div>
+<div class="card rise" style="--i:1"><p class="num">1</p><h3>It checks your clients</h3><p class="card-text">Clients are split across the weekdays, so each one is checked once a week on Indeed and LinkedIn.</p></div>
+<div class="card rise" style="--i:2"><p class="num">2</p><h3>It reads every new posting</h3><p class="card-text">AI decides whether Solvo can fill the role remotely and pulls out the salary, work modality, seniority and languages.</p></div>
+<div class="card rise" style="--i:3"><p class="num">3</p><h3>It researches the client once</h3><p class="card-text">The first time a client has new postings, it adds the website, industry, size, revenue and what the company does.</p></div>
+<div class="card rise" style="--i:4"><p class="num">4</p><h3>It tells you</h3><p class="card-text">You get one email per client with its new postings, and everything is saved in Solvo Platform.</p></div>
 </div>
 <div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
-<aside>In one sentence: the system watches your clients’ job postings so you don’t have to. It looks at Indeed and LinkedIn, keeps only the postings Solvo can actually fill, and sends them to you by email. Today it covers 158 client companies. Clients are split across the weekdays, so each one is checked once a week. Every new posting is read by AI and kept only if it passes three checks: a support role Solvo covers, work that can be done remotely (even if posted as on-site), and no US state license required. The first time a client has new postings, the system also researches the company once: website, industry, size, revenue and what it does. Clients are not scored and no contacts are searched for them.</aside>
+<aside>Four steps, all automatic. Each weekday the system takes the clients assigned to that day, so every client is checked once a week on Indeed and LinkedIn. Every new posting is read by AI and kept only if it passes three checks: a support role Solvo covers, work that can be done remotely (even if posted as on-site), and no US state license required. The first time a client has new postings, the system researches the company once. Clients are not scored and no contacts are searched for them. The last step is the email, and everything stays in Solvo Platform.</aside>
 </section>
 
-<section id="platform" data-transition="fade">
-<div class="head">
+<section id="platform" class="shots-slide" data-transition="fade">
+<div class="shots-head">
 <p class="eyebrow">IN SOLVO PLATFORM</p>
-<div class="bar"></div>
+<h2 class="shots-title">Where to find your clients’ positions</h2>
 </div>
-<h2>Where to find your clients’ positions</h2>
-<div class="clips">
-<div class="clip rise" style="--i:1">
-<video class="clip-frame" src="find.webm" poster="find.jpg" muted loop playsinline preload="auto" aria-label="Open Positions: removing the Has decision makers filter and filtering by Relationship: Client"></video>
-<div class="clip-cap"><p class="clip-step">STEP 1</p><h3>See your clients’ positions</h3><p class="card-text">In Open Positions, remove “Has decision makers”, then Filters › Relationship › Client.</p></div>
+<video class="shot-frame rise" src="find.webm" poster="find.jpg" muted loop playsinline preload="auto" aria-label="Open Positions: removing the Has decision makers filter and filtering by Relationship: Client"></video>
+<p class="shot-cap rise" style="--i:1"><b>See your clients’ positions:</b> remove “Has decision makers”, then Filters › Relationship › Client.</p>
+<div class="dots"><div class="dot dot-on"></div><div class="dot"></div><div class="dot"></div></div>
+<p class="pill pill-pin pill-top">Sample data</p>
+<aside>Step 1 of 3. Clips are recorded on the Solvo Platform prototype with sample data. Open Positions starts filtered to companies with decision makers, and clients don’t have them, so remove that chip first. Then open Filters, go to Relationship and pick Client. Now the list shows your clients’ positions.</aside>
+</section>
+
+<section id="platform2" class="shots-slide" data-transition="fade">
+<div class="shots-head">
+<p class="eyebrow">IN SOLVO PLATFORM</p>
+<h2 class="shots-title">Where to find your clients’ positions</h2>
 </div>
-<div class="clip rise" style="--i:2">
-<video class="clip-frame" src="read.webm" poster="read.jpg" muted loop playsinline preload="auto" aria-label="A client position: remote viability, the reason, salary and the link to the original posting"></video>
-<div class="clip-cap"><p class="clip-step">STEP 2</p><h3>Open a position</h3><p class="card-text">See why Solvo can fill it, the salary, and the link to the original posting.</p></div>
+<video class="shot-frame rise" src="read.webm" poster="read.jpg" muted loop playsinline preload="auto" aria-label="A client position: remote viability, the reason, salary and the link to the original posting"></video>
+<p class="shot-cap rise" style="--i:1"><b>Open a position:</b> why Solvo can fill it, the salary, and the link to the original posting.</p>
+<div class="dots"><div class="dot"></div><div class="dot dot-on"></div><div class="dot"></div></div>
+<p class="pill pill-pin pill-top">Sample data</p>
+<aside>Step 2 of 3. Open any of your clients’ positions. The Analysis section says whether Solvo can fill it and why. You also see the salary, the work modality and the seniority, and the orange button takes you to the original posting on Indeed or LinkedIn.</aside>
+</section>
+
+<section id="platform3" class="shots-slide" data-transition="fade">
+<div class="shots-head">
+<p class="eyebrow">IN SOLVO PLATFORM</p>
+<h2 class="shots-title">Where to find your clients’ positions</h2>
 </div>
-<div class="clip rise" style="--i:3">
-<video class="clip-frame" src="client.webm" poster="client.jpg" muted loop playsinline preload="auto" aria-label="The client’s company page: size, revenue, what the company does and its open positions"></video>
-<div class="clip-cap"><p class="clip-step">STEP 3</p><h3>Check your client’s profile</h3><p class="card-text">What the company does, its size and revenue, and all its open positions.</p></div>
-</div>
-</div>
-<p class="pill pill-pin">Sample data</p>
-<div class="footer"><div class="footer-left"><img class="footer-logo" src="logo-color.png" alt="Solvo Global"><p class="footer-text">Current Client Openings</p></div><p class="pnum"></p></div>
-<aside>Three short clips, recorded on the Solvo Platform prototype with sample data. Step 1: Open Positions starts filtered to companies with decision makers, and clients don’t have them, so remove that chip first. Then open Filters, go to Relationship and pick Client. Step 2: open any position to see why it’s viable, the salary and the button to the original posting. Step 3: click the company name to see the client’s profile and the Positions tab with everything it has posted.</aside>
+<video class="shot-frame rise" src="client.webm" poster="client.jpg" muted loop playsinline preload="auto" aria-label="The client’s company page: size, revenue, what the company does and its open positions"></video>
+<p class="shot-cap rise" style="--i:1"><b>Check your client’s profile:</b> what the company does, its size and revenue, and all its positions.</p>
+<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot dot-on"></div></div>
+<p class="pill pill-pin pill-top">Sample data</p>
+<aside>Step 3 of 3. Click the company name to open your client’s profile: size, revenue, what the company does and its strengths, from the research the system ran the first time it found new postings. The Positions tab lists everything the client has posted, viable or not.</aside>
 </section>
 
 <section id="email" data-transition="fade">
